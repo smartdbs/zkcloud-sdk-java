@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/zkcloud-dbs-3rd/zkcloud-dbs-3rd.iml" filepath="$PROJECT_DIR$/zkcloud-dbs-3rd/zkcloud-dbs-3rd.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zkcloud-sdk-base/zkcloud-sdk-base.iml" filepath="$PROJECT_DIR$/zkcloud-sdk-base/zkcloud-sdk-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zkcloud-sdk-java.iml" filepath="$PROJECT_DIR$/zkcloud-sdk-java.iml" />
+    </modules>
+  </component>
+</project>
