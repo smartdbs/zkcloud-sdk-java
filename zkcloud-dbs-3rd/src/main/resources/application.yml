@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: zkcloud-dbs-demo-3rd
+  jackson:
+    default-property-inclusion: non_null
+
+server:
+  port: 8848
+  tomcat:
+    uri-encoding: UTF-8
+
+dbs:
+  api:
+    appKey: 982f45a54ee64fc680283664cc79258b
+    appSecret: 6605439fd3f14dca86d18d0fb1d20673
+    #节点地址
+    endpoint: 192.168.211.32:18801
+    ssl: false
+
+  push:
+    switch:
+      #推送数据是否加密,true开启，false关闭
+      encrypt: true
+      #接收考勤记录,true开启，false关闭
+      punchRecord: true
+      #接收考勤照片,true开启，false关闭
+      punchPhoto: true
+      #接收设备初始化,true开启，false关闭
+      deviceInit: true
+      #接收设备状态,true开启，false关闭
+      deviceStatus: true
+      #接收指纹登记,true开启，false关闭
+      registerFpTip: false
+      #接收门禁事件记录,true开启，false关闭
+      doorTransactionRecord: true
+      #接收门初始化,true开启，false关闭
+      doorInit: true
+      #接收门初实时状态,true开启，false关闭
+      doorRealStatus: true
+      #推送请求签名验证开关 默认关闭
+      signVerify: false
+      #请求签名加密令牌
+    token: UJW6uuloLl9mdvMp8EamhtBBcnrkmFGt
+    #推送数据加密密钥
+    secret: IIiyk1jFbjS0CpjJ
