@@ -1,2 +1,2 @@
-# zkcloud-sdk-jave
+# zkcloud-sdk-java
 SDK for SmartDBS
