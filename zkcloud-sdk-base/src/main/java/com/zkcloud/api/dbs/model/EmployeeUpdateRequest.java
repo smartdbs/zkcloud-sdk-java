@@ -34,9 +34,13 @@ public class EmployeeUpdateRequest extends AbstractModel {
     @Expose
     private String devicePermission;
     @Expose
+    private String deviceVerifyMode;
+    @Expose
     private String devicePassword;
     @Expose
-    private String deviceVerifyMode;
+    private String devicePasswordEncryption;
+    @Expose
+    private String devicePasswordSalt;
     @Expose
     private String facePhoto;
     @Expose
@@ -148,6 +152,30 @@ public class EmployeeUpdateRequest extends AbstractModel {
         this.deviceVerifyMode = deviceVerifyMode;
     }
 
+    public String getDevicePassword() {
+        return devicePassword;
+    }
+
+    public void setDevicePassword(String devicePassword) {
+        this.devicePassword = devicePassword;
+    }
+
+    public String getDevicePasswordEncryption() {
+        return devicePasswordEncryption;
+    }
+
+    public void setDevicePasswordEncryption(String devicePasswordEncryption) {
+        this.devicePasswordEncryption = devicePasswordEncryption;
+    }
+
+    public String getDevicePasswordSalt() {
+        return devicePasswordSalt;
+    }
+
+    public void setDevicePasswordSalt(String devicePasswordSalt) {
+        this.devicePasswordSalt = devicePasswordSalt;
+    }
+
     public String getFacePhoto() {
         return facePhoto;
     }
@@ -170,14 +198,6 @@ public class EmployeeUpdateRequest extends AbstractModel {
 
     public void setLastUpdateTimeStamp(Long lastUpdateTimeStamp) {
         this.lastUpdateTimeStamp = lastUpdateTimeStamp;
-    }
-
-    public String getDevicePassword() {
-        return devicePassword;
-    }
-
-    public void setDevicePassword(String devicePassword) {
-        this.devicePassword = devicePassword;
     }
 
     public EmployeeUpdateRequest() {

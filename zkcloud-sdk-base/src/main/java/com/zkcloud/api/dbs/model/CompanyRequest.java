@@ -246,4 +246,8 @@ public class CompanyRequest extends AbstractModel {
         this.email = email;
         this.lastUpdateTimeStamp = DateUtil.currentSeconds();
     }
+
+    public CompanyRequest(String companyName) {
+        this.companyName = companyName;
+    }
 }

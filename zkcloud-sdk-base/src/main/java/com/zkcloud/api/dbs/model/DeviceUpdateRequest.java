@@ -16,16 +16,20 @@ public class DeviceUpdateRequest extends AbstractModel {
     private String alais;
 
     @Expose
-    private String fpFunOn;
+    private String timezone;
 
-    @Expose
-    private String faceFunOn;
 
-    @Expose
-    private String punchPhotoFunOn;
-
-    @Expose
-    private String punchRecordFunOn;
+//    @Expose
+//    private String fpFunOn;
+//
+//    @Expose
+//    private String faceFunOn;
+//
+//    @Expose
+//    private String punchPhotoFunOn;
+//
+//    @Expose
+//    private String punchRecordFunOn;
 
     public DeviceUpdateRequest(String sn) {
         this.sn = sn;
@@ -55,35 +59,43 @@ public class DeviceUpdateRequest extends AbstractModel {
         this.alais = alais;
     }
 
-    public String getFpFunOn() {
-        return fpFunOn;
+    public String getTimezone() {
+        return timezone;
     }
 
-    public void setFpFunOn(String fpFunOn) {
-        this.fpFunOn = fpFunOn;
+    public void setTimezone(String timezone) {
+        this.timezone = timezone;
     }
 
-    public String getFaceFunOn() {
-        return faceFunOn;
-    }
-
-    public void setFaceFunOn(String faceFunOn) {
-        this.faceFunOn = faceFunOn;
-    }
-
-    public String getPunchPhotoFunOn() {
-        return punchPhotoFunOn;
-    }
-
-    public void setPunchPhotoFunOn(String punchPhotoFunOn) {
-        this.punchPhotoFunOn = punchPhotoFunOn;
-    }
-
-    public String getPunchRecordFunOn() {
-        return punchRecordFunOn;
-    }
-
-    public void setPunchRecordFunOn(String punchRecordFunOn) {
-        this.punchRecordFunOn = punchRecordFunOn;
-    }
+    //    public String getFpFunOn() {
+//        return fpFunOn;
+//    }
+//
+//    public void setFpFunOn(String fpFunOn) {
+//        this.fpFunOn = fpFunOn;
+//    }
+//
+//    public String getFaceFunOn() {
+//        return faceFunOn;
+//    }
+//
+//    public void setFaceFunOn(String faceFunOn) {
+//        this.faceFunOn = faceFunOn;
+//    }
+//
+//    public String getPunchPhotoFunOn() {
+//        return punchPhotoFunOn;
+//    }
+//
+//    public void setPunchPhotoFunOn(String punchPhotoFunOn) {
+//        this.punchPhotoFunOn = punchPhotoFunOn;
+//    }
+//
+//    public String getPunchRecordFunOn() {
+//        return punchRecordFunOn;
+//    }
+//
+//    public void setPunchRecordFunOn(String punchRecordFunOn) {
+//        this.punchRecordFunOn = punchRecordFunOn;
+//    }
 }
