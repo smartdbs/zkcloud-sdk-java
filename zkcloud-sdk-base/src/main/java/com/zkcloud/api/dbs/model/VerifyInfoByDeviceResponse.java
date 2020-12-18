@@ -7,30 +7,57 @@ import com.google.gson.annotations.Expose;
  */
 public class VerifyInfoByDeviceResponse {
 
+    /**
+ 　　* 员工编号
+ 　　*/
     @Expose
     private String employeeNo;
 
+    /**
+ 　　* 可见光人脸数
+ 　　*/
     @Expose
     private int facePhotoCount;
 
+    /**
+ 　　* 指纹数
+ 　　*/
     @Expose
     private int fingerCount;
 
+    /**
+ 　　* 面部（近红外人脸）数
+ 　　*/
     @Expose
     private int faceCount;
 
+    /**
+ 　　* 掌纹数
+ 　　*/
     @Expose
     private int palmPrintCount;
 
+    /**
+ 　　* 员工在设备的权限，0:普通员工(默认), 14:管理员
+ 　　*/
     @Expose
     private String devicePermission;
 
+    /**
+ 　　* 卡号
+ 　　*/
     @Expose
     private String cardNo;
 
+    /**
+ 　　* 员工设备密码
+ 　　*/
     @Expose
     private String devicePassword;
 
+    /**
+ 　　* 验证方式
+ 　　*/
     @Expose
     private String deviceVerifyMode;
 

@@ -9,8 +9,9 @@ import java.util.List;
 
 public class DoorTimeZoneDeleteRequest extends AbstractModel {
 
-
-
+    /**
+     * 门禁时间段编号,企业内唯一
+     */
     @Expose
     private Integer timezoneNum;
 

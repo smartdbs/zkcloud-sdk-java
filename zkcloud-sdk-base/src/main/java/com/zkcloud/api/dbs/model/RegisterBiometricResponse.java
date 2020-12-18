@@ -7,6 +7,9 @@ import com.google.gson.annotations.Expose;
  */
 public class RegisterBiometricResponse{
 
+    /**
+ 　　* 会话唯一标识，每次登记生物特征sessionId都不一致
+ 　　*/
     @Expose
     private String sessionId;
 

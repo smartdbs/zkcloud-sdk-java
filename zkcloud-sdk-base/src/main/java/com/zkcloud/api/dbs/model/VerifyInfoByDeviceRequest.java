@@ -8,15 +8,27 @@ import com.zkcloud.api.dbs.common.AbstractModel;
  */
 public class VerifyInfoByDeviceRequest extends AbstractModel {
 
+    /**
+ 　　* 员工编号,当employeeNo为空则查询该设备下所有人员的核验信息
+ 　　*/
     @Expose
     private String employeeNo;
 
+    /**
+ 　　* 设备序列号
+ 　　*/
     @Expose
     private String sn;
 
+    /**
+ 　　* 分页查询条件，分页页码，默认第1页
+ 　　*/
     @Expose(serialize = false)
     private Integer curPage;
 
+    /**
+ 　　* 分页查询条件，分页大小，默认每页10条，不超过20条
+ 　　*/
     @Expose(serialize = false)
     private Integer pageSize;
 

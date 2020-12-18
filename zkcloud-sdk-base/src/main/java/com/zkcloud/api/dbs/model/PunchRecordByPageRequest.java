@@ -9,21 +9,40 @@ import com.zkcloud.api.dbs.common.AbstractModel;
  */
 public class PunchRecordByPageRequest extends AbstractModel {
 
+
+    /**
+     * 打卡开始Unix时间戳，精确到秒（默认查询条件）
+     */
     @Expose
     private Long startTime;
 
+    /**
+     * 打卡截止Unix时间戳，精确到秒，为空时默认当前时间（默认查询条件）
+     */
     @Expose
     private Long endTime;
 
+    /**
+     * 开始Unix时间戳，精确到秒，此处指设备将记录推送到服务端的时间
+     */
     @Expose
     private Long pushStartTime;
 
+    /**
+     * 截止Unix时间戳，精确到秒，此处指设备将记录推送到服务端的时间，为空时默认当前时间
+     */
     @Expose
     private Long pushEndTime;
 
+    /**
+     * 分页查询条件，分页页码，默认第1页
+     */
     @Expose(serialize = false)
     private Integer curPage;
 
+    /**
+     * 分页查询条件，分页大小，默认每页10条，不超过20条
+     */
     @Expose(serialize = false)
     private Integer pageSize;
 

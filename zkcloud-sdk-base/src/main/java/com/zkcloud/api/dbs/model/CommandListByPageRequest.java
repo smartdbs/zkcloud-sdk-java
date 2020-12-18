@@ -7,22 +7,39 @@ import com.zkcloud.api.dbs.common.AbstractModel;
  * 分页查询设备命令 请求参数
  */
 public class CommandListByPageRequest extends AbstractModel {
-
+    /**
+ 　　* 设备序列号
+ 　　*/
     @Expose
     private String sn;
 
+    /**
+ 　　* 开始Unix时间戳，精确到秒
+ 　　*/
     @Expose
     private Long startTime;
 
+    /**
+ 　　* 截止Unix时间戳，精确到秒，为空时默认当前时间
+ 　　*/
     @Expose
     private Long endTime;
 
+    /**
+ 　　* 命令状态，0 命令失败，1命令成功
+ 　　*/
     @Expose
     private String status;
 
+    /**
+ 　　* 分页查询条件，分页页码，默认第1页
+ 　　*/
     @Expose(serialize = false)
     private Integer curPage;
 
+    /**
+ 　　* 分页查询条件，分页大小，默认每页10条，不超过20条
+ 　　*/
     @Expose(serialize = false)
     private Integer pageSize;
 

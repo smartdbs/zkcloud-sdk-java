@@ -7,10 +7,10 @@
     <groupId>com.zkteco</groupId>
     <artifactId>zkcloud-sdk-java</artifactId>
     <packaging>pom</packaging>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
 
     <name>${project.groupId}:${project.artifactId}</name>
-    <url>https://github.com/xmzkteco01/zkcloud-sdk-java</url>
+    <url>https://github.com/smartdbs/zkcloud-sdk-java</url>
     <description>Communication security data encryption</description>
 
     <modules>
@@ -30,8 +30,8 @@
 
     <developers>
         <developer>
-            <name>xmzkteco01</name>
-            <id>xmzkteco01</id>
+            <name>smartdbs</name>
+            <id>smartdbs</id>
             <email>zgb_2.zk@zkteco.com</email>
             <roles>
                 <role>Developer</role>
@@ -114,9 +114,9 @@
         </build>
 
     <scm>
-        <connection>scm:git:https://github.com/xmzkteco01/zkcloud-sdk-java</connection>
-        <developerConnection>scm:git:https://github.com/xmzkteco01/zkcloud-sdk-java.git</developerConnection>
-        <url>https://github.com/xmzkteco01/zkcloud-sdk-java</url>
+        <connection>scm:git:https://github.com/smartdbs/zkcloud-sdk-java</connection>
+        <developerConnection>scm:git:https://github.com/smartdbs/zkcloud-sdk-java.git</developerConnection>
+        <url>https://github.com/smartdbs/zkcloud-sdk-java</url>
         <tag>v${project.version}</tag>
     </scm>
 

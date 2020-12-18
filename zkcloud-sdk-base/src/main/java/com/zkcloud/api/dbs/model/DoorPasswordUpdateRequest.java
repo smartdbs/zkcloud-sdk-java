@@ -5,27 +5,52 @@ import com.google.gson.annotations.Expose;
 import com.zkcloud.api.dbs.common.AbstractModel;
 
 public class DoorPasswordUpdateRequest extends AbstractModel {
+
+    /**
+     * 设备序列号
+     */
     @Expose
     private String sn;
 
+    /**
+     * 门编号，取值范围，0～4。当门编号为0，则下发到该设备的所有门；当门编号为空或不传，则默认下发到编号为1的门
+     */
     @Expose
     private Integer doorNum;
 
+    /**
+     * 操作者员工编号
+     */
     @Expose
     private String employeeNo;
 
+    /**
+     * 有效开始时间
+     */
     @Expose
     private Long startTime;
 
+    /**
+     * 有效结束时间
+     */
     @Expose
     private Long endTime;
 
+    /**
+     * 密码，算法：PBKDF2WithHmacSHA256，密文长度：32字节，迭代次数：1000
+     */
     @Expose
     private String password;
 
+    /**
+     * password加密的盐值
+     */
     @Expose
     private String passwordSalt;
 
+    /**
+     * password类型，0：固定密码（默认），一个操作者对一个门只能设置一个固定密码，startTime和endTime不用传；1：临时密码，一个操作者对一个门只能设置一个临时密码，startTime和endTime必传
+     */
     @Expose
     private String passwordType;
 

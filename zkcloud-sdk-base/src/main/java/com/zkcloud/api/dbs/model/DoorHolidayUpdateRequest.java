@@ -8,19 +8,33 @@ import java.util.List;
 
 public class DoorHolidayUpdateRequest extends AbstractModel {
 
-
+    /**
+     * 节假日编号，企业内唯一
+     */
     @Expose
     private String holidayCode;
 
+    /**
+     * 开始日期
+     */
     @Expose
     private String startDate;
 
+    /**
+     * 截止日期，为空时等于startDate，即表示更新startDate当天节假日信息
+     */
     @Expose
     private String endDate;
 
+    /**
+     * 节假日类型，取值7～9，对应更新门禁时间段中的week
+     */
     @Expose
     private String type;
 
+    /**
+     * 节假日循环标志，1:年循环且月日相等, 2:必须年月日相等
+     */
     @Expose
     private String loop;
 

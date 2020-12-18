@@ -6,29 +6,29 @@ import com.zkcloud.api.dbs.common.AbstractModel;
 
 public class CreateDeviceRequest extends AbstractModel {
 
+    /**
+ 　　* 设备序列号
+ 　　*/
     @Expose
     private String sn;
 
+    /**
+ 　　* 设备时区，为空时默认东八区，即+08:00
+ 　　*/
     @Expose
     private String timeZone;
 
+    /**
+ 　　* 设备别名
+ 　　*/
     @Expose
     private String alais;
 
+    /**
+ 　　* 夏令时时区id对应附录中的key
+ 　　*/
     @Expose
     private String timezone;
-
-//    @Expose
-//    private String fpFunOn;
-//
-//    @Expose
-//    private String faceFunOn;
-//
-//    @Expose
-//    private String punchPhotoFunOn;
-//
-//    @Expose
-//    private String punchRecordFunOn;
 
 
     public CreateDeviceRequest(){}
@@ -60,38 +60,6 @@ public class CreateDeviceRequest extends AbstractModel {
     public void setAlais(String alais) {
         this.alais = alais;
     }
-
-//    public String getFpFunOn() {
-//        return fpFunOn;
-//    }
-//
-//    public void setFpFunOn(String fpFunOn) {
-//        this.fpFunOn = fpFunOn;
-//    }
-//
-//    public String getFaceFunOn() {
-//        return faceFunOn;
-//    }
-//
-//    public void setFaceFunOn(String faceFunOn) {
-//        this.faceFunOn = faceFunOn;
-//    }
-//
-//    public String getPunchPhotoFunOn() {
-//        return punchPhotoFunOn;
-//    }
-//
-//    public void setPunchPhotoFunOn(String punchPhotoFunOn) {
-//        this.punchPhotoFunOn = punchPhotoFunOn;
-//    }
-//
-//    public String getPunchRecordFunOn() {
-//        return punchRecordFunOn;
-//    }
-//
-//    public void setPunchRecordFunOn(String punchRecordFunOn) {
-//        this.punchRecordFunOn = punchRecordFunOn;
-//    }
 
 
     public String getTimezone() {

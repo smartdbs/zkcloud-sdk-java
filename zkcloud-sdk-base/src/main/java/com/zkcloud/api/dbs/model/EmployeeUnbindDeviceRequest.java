@@ -7,9 +7,15 @@ import java.util.List;
 
 public class EmployeeUnbindDeviceRequest extends AbstractModel {
 
+    /**
+     * 设备序列号数组　　
+     */
     @Expose
     private List<String> sns;
 
+    /**
+     * 员工工号数组，数组长度不超过100　　
+     */
     @Expose
     private List<String> employeeNos;
 

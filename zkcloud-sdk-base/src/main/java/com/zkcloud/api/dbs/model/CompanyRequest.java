@@ -13,30 +13,57 @@ public class CompanyRequest extends AbstractModel {
     @Expose
     private String companyCode;
 
+    /**
+     * 公司名称
+     */
     @Expose
     private String companyName;
 
+    /**
+     * 公司所属国家编码，参考标准的国家代码,默认CN
+     */
     @Expose
     private String countryCode;
 
+    /**
+     * 公司所属省
+     */
     @Expose
     private String province;
 
+    /**
+     * 公司所属市
+     */
     @Expose
     private String city;
 
+    /**
+     * 街道1
+     */
     @Expose
     private String address1;
 
+    /**
+     * 街道2
+     */
     @Expose
     private String address2;
 
+    /**
+     * 街道3
+     */
     @Expose
     private String address3;
 
+    /**
+     * 公司logo，可下载的图片URL http 或 https地址
+     */
     @Expose
     private String logo;
 
+    /**
+     * 公司网址
+     */
     @Expose
     private String website;
 
