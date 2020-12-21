@@ -249,7 +249,8 @@ public class DBSClient extends AbstractClient {
      * @return
      * @throws ZKCloudSDKException
      */
-    public Message<VerifyInfoByEmployeeResponse> verifyInfoByEmployee(VerifyInfoByEmployeeRequest verifyInfoByEmployeeRequest) throws ZKCloudSDKException {
+    public Message<VerifyInfoByEmployeeResponse> verifyInfoByEmployee(VerifyInfoByEmployeeRequest verifyInfoByEmployeeRequest)
+            throws ZKCloudSDKException {
         MessagePayload messagePayload = new MessagePayload();
         messagePayload.setPageSize(verifyInfoByEmployeeRequest.getPageSize());
         messagePayload.setCurPage(verifyInfoByEmployeeRequest.getCurPage());
@@ -572,7 +573,8 @@ public class DBSClient extends AbstractClient {
      * @return
      * @throws ZKCloudSDKException
      */
-    public Message<EmployeeUnbindDeviceResponse> employeeUnBindDevice(EmployeeUnbindDeviceRequest employeeUnbindDeviceRequest) throws ZKCloudSDKException {
+    public Message<EmployeeUnbindDeviceResponse> employeeUnBindDevice(EmployeeUnbindDeviceRequest employeeUnbindDeviceRequest)
+            throws ZKCloudSDKException {
         String response = baseRequest("/v1.0/hr/employee/unbindDevice", employeeUnbindDeviceRequest);
         Type type = new TypeToken<Message<EmployeeUnbindDeviceResponse>>() {
         }.getType();
@@ -681,7 +683,7 @@ public class DBSClient extends AbstractClient {
      * @return
      * @throws ZKCloudSDKException
      */
-    public Message openDoorPassword (DoorPasswordOpenRequest doorPasswordOpenRequest) throws ZKCloudSDKException {
+    public Message openDoorPassword(DoorPasswordOpenRequest doorPasswordOpenRequest) throws ZKCloudSDKException {
         String response = baseRequest("/v1.0/device/doorPassword/open", doorPasswordOpenRequest);
         Type type = new TypeToken<Message>() {
         }.getType();
@@ -765,7 +767,8 @@ public class DBSClient extends AbstractClient {
      * @return
      * @throws ZKCloudSDKException
      */
-    public Message doorPermissionGroupRemoveDoor(DoorPermissionGroupRemoveDoorRequest doorPermissionGroupRemoveDoorRequest) throws ZKCloudSDKException {
+    public Message doorPermissionGroupRemoveDoor(DoorPermissionGroupRemoveDoorRequest doorPermissionGroupRemoveDoorRequest)
+            throws ZKCloudSDKException {
         String response = baseRequest("/v1.0/device/permissionGroup/removeDoor", doorPermissionGroupRemoveDoorRequest);
         Type type = new TypeToken<Message>() {
         }.getType();
@@ -779,7 +782,8 @@ public class DBSClient extends AbstractClient {
      * @return
      * @throws ZKCloudSDKException
      */
-    public Message doorPermissionGroupAddEmployee(DoorPermissionGroupAddEmployeeRequest doorPermissionGroupAddEmployeeRequest) throws ZKCloudSDKException {
+    public Message doorPermissionGroupAddEmployee(DoorPermissionGroupAddEmployeeRequest doorPermissionGroupAddEmployeeRequest)
+            throws ZKCloudSDKException {
         String response = baseRequest("/v1.0/device/permissionGroup/addEmp", doorPermissionGroupAddEmployeeRequest);
         Type type = new TypeToken<Message>() {
         }.getType();
@@ -793,7 +797,8 @@ public class DBSClient extends AbstractClient {
      * @return
      * @throws ZKCloudSDKException
      */
-    public Message doorPermissionGroupRemoveEmployee(DoorPermissionGroupRemoveEmployeeRequest doorPermissionGroupRemoveEmployeeRequest) throws ZKCloudSDKException {
+    public Message doorPermissionGroupRemoveEmployee(DoorPermissionGroupRemoveEmployeeRequest doorPermissionGroupRemoveEmployeeRequest)
+            throws ZKCloudSDKException {
         String response = baseRequest("/v1.0/device/permissionGroup/removeEmp", doorPermissionGroupRemoveEmployeeRequest);
         Type type = new TypeToken<Message>() {
         }.getType();
@@ -835,7 +840,8 @@ public class DBSClient extends AbstractClient {
      * @return
      * @throws ZKCloudSDKException
      */
-    public Message<List<DoorTransactionRecordResponse>> getTransactionRecord(DoorTransactionRecordRequest doorTransactionRecordRequest) throws ZKCloudSDKException {
+    public Message<List<DoorTransactionRecordResponse>> getTransactionRecord(DoorTransactionRecordRequest doorTransactionRecordRequest)
+            throws ZKCloudSDKException {
         MessagePayload messagePayload = new MessagePayload();
         messagePayload.setPageSize(doorTransactionRecordRequest.getPageSize());
         messagePayload.setCurPage(doorTransactionRecordRequest.getCurPage());
@@ -866,7 +872,8 @@ public class DBSClient extends AbstractClient {
      * @return
      * @throws ZKCloudSDKException
      */
-    public Message<List<PunchRecordByPageResponse>> getPunchRecordByPage(PunchRecordByPageRequest punchRecordByPageRequest) throws ZKCloudSDKException {
+    public Message<List<PunchRecordByPageResponse>> getPunchRecordByPage(PunchRecordByPageRequest punchRecordByPageRequest)
+            throws ZKCloudSDKException {
         MessagePayload messagePayload = new MessagePayload();
         messagePayload.setPageSize(punchRecordByPageRequest.getPageSize());
         messagePayload.setCurPage(punchRecordByPageRequest.getCurPage());
