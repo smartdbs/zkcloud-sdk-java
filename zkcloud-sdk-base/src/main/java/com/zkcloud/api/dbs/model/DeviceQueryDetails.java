@@ -3,41 +3,111 @@ package com.zkcloud.api.dbs.model;
 import com.google.gson.annotations.Expose;
 
 public class DeviceQueryDetails {
-
+    /**
+     * 设备通讯协议，0 pull，1 push，2 best，3 ufo，4 best-w，5 best-t
+     */
     @Expose
     private String protocol;
+
+    /**
+     * 协议版本
+     */
     @Expose
     private String protocolVer;
+
+    /**
+     * 设备型号
+     */
     @Expose
     private String model;
+
+    /**
+     * 设备MAC地址
+     */
     @Expose
     private String macAddress;
+
+    /**
+     * 核验记录数
+     */
     @Expose
     private Integer verifyRecords;
+
+    /**
+     * 人员数
+     */
     @Expose
     private Integer userCount;
+
+    /**
+     * 人脸数
+     */
     @Expose
     private Integer faceCount;
+
+    /**
+     * 指纹数
+     */
     @Expose
     private Integer fingerCount;
+
+    /**
+     * 掌纹数
+     */
     @Expose
     private Integer palmPrintCount;
+
+    /**
+     * 设备最新请求时间戳
+     */
     @Expose
     private Object lastRequestTimeStamp;
+
+    /**
+     * 是否支持门禁功能，0 不支持，1支持，2未知
+     */
     @Expose
     private String supportAcc;
+
+    /**
+     * 是否支持指纹，0 不支持，1支持，2未知
+     */
     @Expose
     private String supportFinger;
+
+    /**
+     * 是否支持近红外人脸，0 不支持，1支持，2未知
+     */
     @Expose
     private String supportFace;
+
+    /**
+     * 是否支持可见光人脸，0 不支持，1支持，2未知
+     */
     @Expose
     private String supportFacePhoto;
+
+    /**
+     * 是否支持掌纹，0 不支持，1支持，2未知
+     */
     @Expose
     private String supportPalmPrint;
+
+    /**
+     * 是否支持远程登记指纹，0 不支持，1支持，2未知
+     */
     @Expose
     private String supportRemoteFinger;
+
+    /**
+     * 是否支持远程登记可见光人脸，0 不支持，1支持，2未知
+     */
     @Expose
     private String supportRemoteFacePhoto;
+
+    /**
+     * 是否支持远程登记掌纹，0 不支持，1支持，2未知
+     */
     @Expose
     private String supportRemotePalmPrint;
 

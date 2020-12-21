@@ -8,13 +8,21 @@ import java.util.List;
 
 public class DoorPermissionGroupRemoveDoorRequest extends AbstractModel {
 
-
+    /**
+     * 门禁权限组编号,企业内唯一
+     */
     @Expose
     private Integer groupNum;
 
+    /**
+     * 设备序列号
+     */
     @Expose
     private String sn;
 
+    /**
+     * 门编号列表，当设备为单门控制时此参数可为空，比如一体机，为空时认定门编号为1
+     */
     @Expose
     private List<Integer> doorNums;
 

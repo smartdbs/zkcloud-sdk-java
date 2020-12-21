@@ -3,9 +3,16 @@ package com.zkcloud.api.dbs.model;
 import com.google.gson.annotations.Expose;
 
 public  class DoorParam{
+
+    /**
+     * 参数名
+     */
     @Expose
     private String name;
 
+    /**
+     * 参数值
+     */
     @Expose
     private String value;
     public String getName() {

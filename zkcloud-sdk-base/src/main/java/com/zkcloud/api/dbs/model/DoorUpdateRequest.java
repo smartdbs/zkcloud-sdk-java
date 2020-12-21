@@ -5,14 +5,33 @@ import com.google.gson.annotations.Expose;
 import com.zkcloud.api.dbs.common.AbstractModel;
 
 public class DoorUpdateRequest extends AbstractModel {
+
+    /**
+ 　　* 设备序列号
+     */
     @Expose
     private String sn;
+    /**
+     * 门编号，取值范围，1～4
+     */
     @Expose
     private Integer doorNum;
+
+    /**
+     * 门名称
+     */
     @Expose
     private String doorName;
+
+    /**
+     * 启用状态，0:停用，1:启用，为空时默认等于1
+     */
     @Expose
     private Integer enable;
+
+    /**
+     * 硬件设备的门锁继电器的编号，为空时默认与doorNum一致
+     */
     @Expose
     private Integer address;
 

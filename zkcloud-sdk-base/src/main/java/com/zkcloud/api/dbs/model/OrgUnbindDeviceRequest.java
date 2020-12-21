@@ -7,9 +7,15 @@ import java.util.List;
 
 public class OrgUnbindDeviceRequest extends AbstractModel {
 
+    /**
+ 　　* 设备序列号数组
+ 　　*/
     @Expose
     private List<String> sns;
 
+    /**
+ 　　* 组织架构编码数组
+ 　　*/
     @Expose
     private List<String> orgCodes;
 

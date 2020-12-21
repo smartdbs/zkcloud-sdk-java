@@ -6,14 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="zkcloud-sdk-base" />
         <module name="zkcloud-dbs-3rd" />
+        <module name="zkcloud-sdk-base" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="zkcloud-dbs-3rd" target="1.8" />
-      <module name="zkcloud-sdk-base" target="1.8" />
-      <module name="zkcloud-sdk-java" target="1.8" />
+      <module name="zkcloud-dbs-3rd" target="1.5" />
+      <module name="zkcloud-sdk-base" target="1.5" />
+      <module name="zkcloud-sdk-java" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

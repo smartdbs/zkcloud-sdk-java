@@ -7,24 +7,45 @@ import com.google.gson.annotations.Expose;
  */
 public class CommandListByPageResponse{
 
+    /**
+     * 设备序列号
+     */
     @Expose
     private String sn;
 
+    /**
+     * 设备协议；push、best
+     */
     @Expose
     private String protocol;
 
+    /**
+     * 命令创建时间
+     */
     @Expose
     private Long commitTime;
 
+    /**
+     * 命令详情
+     */
     @Expose
     private String content;
 
+    /**
+     * 设备回复时间
+     */
     @Expose
     private Long returnTime;
 
+    /**
+     * 设备回复值，一般为 0 为成功，非 0 为失败
+     */
     @Expose
     private String returnValue;
 
+    /**
+     * 命令状态；0: 未取走(默认) 1: 已取走未回复 2: 已回复 3: 已清除
+     */
     @Expose
     private String status;
 

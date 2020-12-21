@@ -483,7 +483,7 @@ public class DBSClient extends AbstractClient {
      * @return
      * @throws ZKCloudSDKException
      */
-    public Message registerBiometric(RegisterBiometricRequest registerBiometricRequest) throws ZKCloudSDKException {
+    public Message<RegisterBiometricResponse> registerBiometric(RegisterBiometricRequest registerBiometricRequest) throws ZKCloudSDKException {
         String response = baseRequest("/v1.0/device/registerBiometric", registerBiometricRequest);
         Type type = new TypeToken<Message<RegisterBiometricResponse>>() {
         }.getType();
@@ -511,14 +511,14 @@ public class DBSClient extends AbstractClient {
      * @return
      * @throws ZKCloudSDKException
      */
-    public Message commandListByPage(CommandListByPageRequest commandListByPageRequest) throws ZKCloudSDKException {
+    public Message<List<CommandListByPageResponse>> commandListByPage(CommandListByPageRequest commandListByPageRequest) throws ZKCloudSDKException {
 
         MessagePayload messagePayload = new MessagePayload();
         messagePayload.setPageSize(commandListByPageRequest.getPageSize());
         messagePayload.setCurPage(commandListByPageRequest.getCurPage());
 
         String response = baseRequest("/v1.0/device/commandListByPage", commandListByPageRequest, messagePayload);
-        Type type = new TypeToken<Message>() {
+        Type type = new TypeToken<Message<List<CommandListByPageResponse>>>() {
         }.getType();
         return gson.fromJson(response, type);
     }

@@ -6,9 +6,15 @@ import com.zkcloud.api.dbs.common.AbstractModel;
 
 public class BiotemplateRequest extends AbstractModel {
 
+    /**
+ 　　* 员工编号
+ 　　*/
     @Expose
     private String employeeNo;
 
+    /**
+ 　　* 生物特征类别
+ 　　*/
     @Expose
     private String type;
 

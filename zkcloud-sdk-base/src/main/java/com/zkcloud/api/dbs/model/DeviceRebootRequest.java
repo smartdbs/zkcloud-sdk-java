@@ -5,7 +5,9 @@ import com.google.gson.annotations.Expose;
 import com.zkcloud.api.dbs.common.AbstractModel;
 
 public class DeviceRebootRequest extends AbstractModel {
-
+    /**
+     * 设备序列号
+     */
     @Expose
     private String sn;
 

@@ -6,6 +6,10 @@ import com.zkcloud.api.dbs.common.AbstractModel;
 import java.util.List;
 
 public class EmployeeDeleteBatchRequest extends AbstractModel {
+
+    /**
+     * 员工集合
+     */
     @Expose
     private List<EmployeeDeleteRequest> employees;
 

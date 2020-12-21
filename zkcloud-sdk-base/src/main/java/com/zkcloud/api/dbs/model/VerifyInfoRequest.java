@@ -6,6 +6,9 @@ import com.zkcloud.api.dbs.common.AbstractModel;
 
 public class VerifyInfoRequest  extends AbstractModel {
 
+    /**
+ 　　* 员工编号
+ 　　*/
     @Expose
     private String employeeNo;
 

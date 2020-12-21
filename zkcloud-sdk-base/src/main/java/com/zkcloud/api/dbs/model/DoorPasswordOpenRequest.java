@@ -5,15 +5,27 @@ import com.google.gson.annotations.Expose;
 import com.zkcloud.api.dbs.common.AbstractModel;
 
 public class DoorPasswordOpenRequest extends AbstractModel {
+    /**
+     * 设备序列号
+     */
     @Expose
     private String sn;
 
+    /**
+     * 门编号，取值范围，0～4。当门编号为0，则下发到该设备的所有门；当门编号为空或不传，则默认下发到编号为1的门
+     */
     @Expose
     private Integer doorNum;
 
+    /**
+     * 操作者员工编号
+     */
     @Expose
     private String employeeNo;
 
+    /**
+     * 开门密码，为下发固定密码中的密码的原始明文密码
+     */
     @Expose
     private String password;
 

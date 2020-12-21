@@ -8,10 +8,15 @@ import java.util.List;
 
 public class DoorPermissionGroupAddDoorRequest extends AbstractModel {
 
-
+    /**
+     * 门禁权限组编号,企业内唯一
+     */
     @Expose
     private Integer groupNum;
 
+    /**
+     * 设备信息列表
+     */
     @Expose
     private List<DoorPermissionGroupAddDoorDevice> devices;
 

@@ -4,32 +4,59 @@ package com.zkcloud.api.dbs.model;
 import com.google.gson.annotations.Expose;
 import com.zkcloud.api.dbs.common.AbstractModel;
 
-public class DoorTransactionRecordResponse extends AbstractModel {
+public class DoorTransactionRecordResponse {
 
+    /**
+     * 打卡设备序列号
+     */
     @Expose
     private  String sn;
 
+    /**
+     * 门编号
+     */
     @Expose
     private  String doorNum;
 
+    /**
+     * 操作者，当验证通过时应为员工工号或访客编号，若远程开门时为远程开门时下发的操作者名称
+     */
     @Expose
     private  String operator;
 
+    /**
+     * 门禁事件时间(iso8601标准格式)
+     */
     @Expose
     private  String time;
 
+    /**
+     * 门禁事件时间(时间戳)
+     */
     @Expose
     private  Long timeStamp;
 
+    /**
+     * 记录推送到服务器的时间
+     */
     @Expose
     private  Long pushTime;
 
+    /**
+     * 出入状态，0:入，1:出
+     */
     @Expose
     private  String inOutState;
 
+    /**
+     * 事件码，详见门禁实时事件码说明
+     */
     @Expose
     private  String eventCode;
 
+    /**
+     * 验证方式，详见验证方式说明
+     */
     @Expose
     private  String verified;
 

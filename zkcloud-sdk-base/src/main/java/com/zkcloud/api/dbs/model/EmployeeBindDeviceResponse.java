@@ -4,8 +4,15 @@ package com.zkcloud.api.dbs.model;
 import com.google.gson.annotations.Expose;
 
 public class EmployeeBindDeviceResponse {
+    /**
+     * 绑定异常的设备序列号，异常情况才返回
+ 　　*/
     @Expose
     private String sn;
+
+    /**
+     * 绑定异常的员工工号，异常情况才返回
+     */
     @Expose
     private String employeeNo;
 

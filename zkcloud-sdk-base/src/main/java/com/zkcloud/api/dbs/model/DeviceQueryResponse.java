@@ -4,27 +4,69 @@ package com.zkcloud.api.dbs.model;
 import com.google.gson.annotations.Expose;
 
 public class DeviceQueryResponse {
-
+    /**
+     * 设备序列号
+     */
     @Expose
     private String sn;
+
+    /**
+     * 设备时区
+     */
     @Expose
     private String timezone;
+
+    /**
+     * 设备别名
+     */
     @Expose
     private String alais;
+
+    /**
+     * 设备在线状态，1代表在线，0代表离线
+     */
     @Expose
     private Integer status;
+
+    /**
+     * 设备启用状态，1代表启用，0代表禁用
+     */
     @Expose
     private Integer enable;
+
+    /**
+     * 设备内网Ip地址
+     */
     @Expose
     private String localIp;
+
+    /**
+     * 设备公网Ip地址
+     */
     @Expose
     private String remoteIp;
+
+    /**
+     * 设备固件版本号
+     */
     @Expose
     private String fwVersion;
+
+    /**
+     * 设备型号
+     */
     @Expose
     private String model;
+
+    /**
+     * 设备类型，0代表考勤设备，1代表门禁设备，999代表未知设备
+     */
     @Expose
     private String type;
+
+    /**
+     * 设备详细信息，其他为设备基本信息
+     */
     @Expose
     private DeviceQueryDetails details;
 

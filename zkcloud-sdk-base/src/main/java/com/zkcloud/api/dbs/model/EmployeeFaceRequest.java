@@ -8,6 +8,9 @@ import com.zkcloud.api.dbs.common.AbstractModel;
  */
 public class EmployeeFaceRequest extends AbstractModel {
 
+    /**
+ 　　* 员工编号
+ 　　*/
     @Expose
     private String employeeNo;
 

@@ -8,6 +8,10 @@ import com.zkcloud.api.dbs.common.AbstractModel;
 import java.util.List;
 
 public class EmployeeUpdateBatchRequest extends AbstractModel {
+
+    /**
+ 　　* 员工集合
+ 　　*/
     @SerializedName("employees")
     @Expose
     private List<EmployeeUpdateRequest> employeeList;

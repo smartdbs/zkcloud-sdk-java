@@ -6,6 +6,9 @@ import com.zkcloud.api.dbs.common.AbstractModel;
 
 public class DeviceDeleteRequest extends AbstractModel {
 
+    /**
+ 　　* 设备序列号
+ 　　*/
     @Expose
     private String sn;
 

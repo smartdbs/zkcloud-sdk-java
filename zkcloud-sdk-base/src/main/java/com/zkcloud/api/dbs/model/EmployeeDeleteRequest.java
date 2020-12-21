@@ -7,9 +7,15 @@ import com.zkcloud.api.dbs.common.AbstractModel;
 
 public class EmployeeDeleteRequest extends AbstractModel {
 
+    /**
+ 　　*  员工编号
+ 　　*/
     @Expose
     private String employeeNo;
 
+    /**
+ 　　*  第三方最后修改时间戳，若该时间戳小于或等于上一次该员工收到的时间戳，则该数据不处理，但会返回成功编码
+ 　　*/
     @Expose
     private Long lastUpdateTimeStamp;
 

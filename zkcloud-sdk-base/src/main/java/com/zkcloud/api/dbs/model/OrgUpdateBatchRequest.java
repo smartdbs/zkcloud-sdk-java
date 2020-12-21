@@ -6,6 +6,10 @@ import com.zkcloud.api.dbs.common.AbstractModel;
 import java.util.List;
 
 public class OrgUpdateBatchRequest extends AbstractModel {
+
+    /**
+ 　　* 组织架构集合
+ 　　*/
     @Expose
     private List<OrgUpdateRequest> organizations;
 

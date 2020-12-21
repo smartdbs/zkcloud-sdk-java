@@ -8,7 +8,9 @@ import java.util.List;
 
 public class DoorHolidayDeleteRequest extends AbstractModel {
 
-
+    /**
+     * 节假日编号列表
+     */
     @Expose
     private List<String> holidayCodes;
 

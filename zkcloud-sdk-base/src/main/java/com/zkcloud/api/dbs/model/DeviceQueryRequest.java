@@ -6,9 +6,15 @@ import com.zkcloud.api.dbs.common.AbstractModel;
 
 public class DeviceQueryRequest extends AbstractModel {
 
+    /**
+ 　　* 设备序列号
+ 　　*/
     @Expose
     private String sn;
 
+    /**
+ 　　* 是否需要详细信息，当该参数为1，返回基本信息和详细信息；当该参数为空或不为1，则只返回基本信息
+ 　　*/
     @Expose
     private Integer needDetails;
 

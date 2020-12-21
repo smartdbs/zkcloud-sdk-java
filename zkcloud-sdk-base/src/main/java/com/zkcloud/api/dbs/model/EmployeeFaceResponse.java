@@ -7,6 +7,9 @@ import com.google.gson.annotations.Expose;
  */
 public class EmployeeFaceResponse {
 
+    /**
+ 　　* 人脸照片的base64字符串
+ 　　*/
     @Expose
     private String facePhoto;
 

@@ -9,7 +9,9 @@ import java.util.List;
 public class OrgDeleteBatchRequest extends AbstractModel {
     @Expose
     private List<OrgDeleteRequest> organizations;
-
+    /**
+      * 是否自动解绑该部门关联的员工，1:是，0:否（默认），若为否，则必须先解绑该组织架构关联的人员信息
+      */
     @Expose
     private String autoUnbindEmployee;
 

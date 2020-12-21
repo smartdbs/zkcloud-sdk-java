@@ -6,9 +6,15 @@ import com.zkcloud.api.dbs.common.AbstractModel;
 
 public class EmployeeFaceSyncRequest extends AbstractModel {
 
+    /**
+ 　　* 员工编号
+ 　　*/
     @Expose
     private String employeeNo;
 
+    /**
+ 　　* 人脸照片，用于人脸比对，支持URL(http/https)和base64
+ 　　*/
     @Expose
     private String facePhoto;
 
