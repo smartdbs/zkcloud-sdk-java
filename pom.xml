@@ -15,7 +15,6 @@
 
     <modules>
         <module>zkcloud-sdk-base</module>
-        <module>zkcloud-dbs-3rd</module>
     </modules>
 
     <!-- 许可证信息 -->
