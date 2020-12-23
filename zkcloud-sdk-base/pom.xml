@@ -12,7 +12,7 @@
     <artifactId>zkcloud-sdk-base</artifactId>
     <packaging>jar</packaging>
     <version>1.1.1</version>
-    <description>The jar to the maven central repository</description>
+    <description>Smart DBS Open API SDK for Java</description>
 
     <dependencies>
         <dependency>

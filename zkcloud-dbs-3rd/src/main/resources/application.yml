@@ -5,16 +5,16 @@ spring:
     default-property-inclusion: non_null
 
 server:
-  port: 8848
+  port: 8080
   tomcat:
     uri-encoding: UTF-8
 
 dbs:
   api:
-    appKey: 982f45a54ee64fc680283664cc79258b
-    appSecret: 6605439fd3f14dca86d18d0fb1d20673
+    appKey: 8a5927abbc434a5a9eb6ba5d0bd6fb18
+    appSecret: fdd9af3c85ae479baa051cf998aa257f
     #节点地址
-    endpoint: 192.168.211.32:18801
+    endpoint: smartdbs-api.zkclouds.com
     ssl: false
 
   push:

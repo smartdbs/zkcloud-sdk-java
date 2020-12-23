@@ -6,14 +6,99 @@ import com.zkcloud.api.dbs.common.Credential;
 import com.zkcloud.api.dbs.common.Message;
 import com.zkcloud.api.dbs.common.constant.ErrorCode;
 import com.zkcloud.api.dbs.common.profile.HttpProfile;
+import com.zkcloud.api.dbs.common.profile.Language;
 import com.zkcloud.api.dbs.exception.ZKCloudSDKException;
-import com.zkcloud.api.dbs.model.*;
-import org.junit.*;
-import org.junit.runners.MethodSorters;
-
+import com.zkcloud.api.dbs.model.BiotemplateRequest;
+import com.zkcloud.api.dbs.model.CancelRegisterBiometricRequest;
+import com.zkcloud.api.dbs.model.CancelRegisterFpRequest;
+import com.zkcloud.api.dbs.model.CommandListByPageRequest;
+import com.zkcloud.api.dbs.model.CommandListByPageResponse;
+import com.zkcloud.api.dbs.model.CompanyRequest;
+import com.zkcloud.api.dbs.model.CreateCompanyResponse;
+import com.zkcloud.api.dbs.model.CreateDeviceRequest;
+import com.zkcloud.api.dbs.model.DeviceDeleteRequest;
+import com.zkcloud.api.dbs.model.DeviceDisableRequest;
+import com.zkcloud.api.dbs.model.DeviceEnableRequest;
+import com.zkcloud.api.dbs.model.DeviceQueryRequest;
+import com.zkcloud.api.dbs.model.DeviceQueryResponse;
+import com.zkcloud.api.dbs.model.DeviceRebootRequest;
+import com.zkcloud.api.dbs.model.DeviceRefreshEmployeeRequest;
+import com.zkcloud.api.dbs.model.DeviceReloadEmployeeRequest;
+import com.zkcloud.api.dbs.model.DeviceReloadPunchRequest;
+import com.zkcloud.api.dbs.model.DeviceUpdateRequest;
+import com.zkcloud.api.dbs.model.DoorHolidayDeleteRequest;
+import com.zkcloud.api.dbs.model.DoorHolidayUpdateRequest;
+import com.zkcloud.api.dbs.model.DoorParam;
+import com.zkcloud.api.dbs.model.DoorParamQueryRequest;
+import com.zkcloud.api.dbs.model.DoorParamQueryResponse;
+import com.zkcloud.api.dbs.model.DoorParamUpdateRequest;
+import com.zkcloud.api.dbs.model.DoorPasswordDeleteRequest;
+import com.zkcloud.api.dbs.model.DoorPasswordOpenRequest;
+import com.zkcloud.api.dbs.model.DoorPasswordUpdateRequest;
+import com.zkcloud.api.dbs.model.DoorPermissionGroupAddDoorDevice;
+import com.zkcloud.api.dbs.model.DoorPermissionGroupAddDoorRequest;
+import com.zkcloud.api.dbs.model.DoorPermissionGroupAddEmployeeRequest;
+import com.zkcloud.api.dbs.model.DoorPermissionGroupDeleteRequest;
+import com.zkcloud.api.dbs.model.DoorPermissionGroupRemoveDoorRequest;
+import com.zkcloud.api.dbs.model.DoorPermissionGroupRemoveEmployeeRequest;
+import com.zkcloud.api.dbs.model.DoorPermissionGroupUpdateRequest;
+import com.zkcloud.api.dbs.model.DoorQueryRequest;
+import com.zkcloud.api.dbs.model.DoorQueryResponse;
+import com.zkcloud.api.dbs.model.DoorTimeZoneDeleteRequest;
+import com.zkcloud.api.dbs.model.DoorTimeZoneDetail;
+import com.zkcloud.api.dbs.model.DoorTimeZoneUpdateRequest;
+import com.zkcloud.api.dbs.model.DoorTransactionRecordRequest;
+import com.zkcloud.api.dbs.model.DoorTransactionRecordResponse;
+import com.zkcloud.api.dbs.model.DoorUpdateRequest;
+import com.zkcloud.api.dbs.model.EmployeeBindDeviceRequest;
+import com.zkcloud.api.dbs.model.EmployeeBindDeviceResponse;
+import com.zkcloud.api.dbs.model.EmployeeDeleteBatchRequest;
+import com.zkcloud.api.dbs.model.EmployeeDeleteRequest;
+import com.zkcloud.api.dbs.model.EmployeeDeleteResponse;
+import com.zkcloud.api.dbs.model.EmployeeFaceRequest;
+import com.zkcloud.api.dbs.model.EmployeeFaceResponse;
+import com.zkcloud.api.dbs.model.EmployeeFaceSyncRequest;
+import com.zkcloud.api.dbs.model.EmployeeUnbindDeviceRequest;
+import com.zkcloud.api.dbs.model.EmployeeUnbindDeviceResponse;
+import com.zkcloud.api.dbs.model.EmployeeUpdateBatchRequest;
+import com.zkcloud.api.dbs.model.EmployeeUpdateRequest;
+import com.zkcloud.api.dbs.model.EmployeeUpdateResponse;
+import com.zkcloud.api.dbs.model.OpenDoorRequest;
+import com.zkcloud.api.dbs.model.OrgBindDeviceRequest;
+import com.zkcloud.api.dbs.model.OrgBindDeviceResponse;
+import com.zkcloud.api.dbs.model.OrgDeleteBatchRequest;
+import com.zkcloud.api.dbs.model.OrgDeleteRequest;
+import com.zkcloud.api.dbs.model.OrgUnbindDeviceRequest;
+import com.zkcloud.api.dbs.model.OrgUnbindDeviceResponse;
+import com.zkcloud.api.dbs.model.OrgUpdateBatchRequest;
+import com.zkcloud.api.dbs.model.OrgUpdateRequest;
+import com.zkcloud.api.dbs.model.OrgUpdateResponse;
+import com.zkcloud.api.dbs.model.PunchRecordByPageRequest;
+import com.zkcloud.api.dbs.model.PunchRecordByPageResponse;
+import com.zkcloud.api.dbs.model.PunchRecordRequest;
+import com.zkcloud.api.dbs.model.PunchRecordResponse;
+import com.zkcloud.api.dbs.model.PunchRecordVerifyRequest;
+import com.zkcloud.api.dbs.model.PunchRecordVerifyResponse;
+import com.zkcloud.api.dbs.model.RegisterBiometricRequest;
+import com.zkcloud.api.dbs.model.RegisterBiometricResponse;
+import com.zkcloud.api.dbs.model.RegisterFpRequest;
+import com.zkcloud.api.dbs.model.RegisterFpResponse;
+import com.zkcloud.api.dbs.model.User;
+import com.zkcloud.api.dbs.model.VerifyInfoByDeviceRequest;
+import com.zkcloud.api.dbs.model.VerifyInfoByDeviceResponse;
+import com.zkcloud.api.dbs.model.VerifyInfoByEmployeeRequest;
+import com.zkcloud.api.dbs.model.VerifyInfoByEmployeeResponse;
+import com.zkcloud.api.dbs.model.VerifyInfoRequest;
+import com.zkcloud.api.dbs.model.VerifyInfoResponse;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 @FixMethodOrder(MethodSorters.JVM)
 public class DBSClientTest {
@@ -38,6 +123,8 @@ public class DBSClientTest {
         client = new DBSClient(endpoint, credential);
         client.getClientProfile().getHttpProfile().setProtocol(HttpProfile.REQ_HTTP); // 非必须，默认https
         client.refreshToken();//刷新accessToken
+
+        client.getClientProfile().setLanguage(Language.ZH_CN);
     }
 
     @After
