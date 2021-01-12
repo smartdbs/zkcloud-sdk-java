@@ -11,12 +11,97 @@ import com.zkcloud.api.dbs.common.constant.ErrorCode;
 import com.zkcloud.api.dbs.common.constant.PathConstant;
 import com.zkcloud.api.dbs.common.http.HttpConnection;
 import com.zkcloud.api.dbs.exception.ZKCloudSDKException;
-import com.zkcloud.api.dbs.model.*;
-import okhttp3.Response;
-
+import com.zkcloud.api.dbs.model.BiotemplateRequest;
+import com.zkcloud.api.dbs.model.CancelRegisterBiometricRequest;
+import com.zkcloud.api.dbs.model.CancelRegisterFpRequest;
+import com.zkcloud.api.dbs.model.CommandListByPageRequest;
+import com.zkcloud.api.dbs.model.CommandListByPageResponse;
+import com.zkcloud.api.dbs.model.CompanyRequest;
+import com.zkcloud.api.dbs.model.CreateCompanyResponse;
+import com.zkcloud.api.dbs.model.CreateDeviceRequest;
+import com.zkcloud.api.dbs.model.DeviceDeleteRequest;
+import com.zkcloud.api.dbs.model.DeviceDisableRequest;
+import com.zkcloud.api.dbs.model.DeviceEnableRequest;
+import com.zkcloud.api.dbs.model.DeviceQueryRequest;
+import com.zkcloud.api.dbs.model.DeviceQueryResponse;
+import com.zkcloud.api.dbs.model.DeviceRebootRequest;
+import com.zkcloud.api.dbs.model.DeviceRefreshEmployeeRequest;
+import com.zkcloud.api.dbs.model.DeviceReloadEmployeeRequest;
+import com.zkcloud.api.dbs.model.DeviceReloadPunchRequest;
+import com.zkcloud.api.dbs.model.DeviceUpdateRequest;
+import com.zkcloud.api.dbs.model.DeviceUpgradeBatchRequest;
+import com.zkcloud.api.dbs.model.DeviceUpgradeBatchResponse;
+import com.zkcloud.api.dbs.model.DeviceUpgradeHistoryRequest;
+import com.zkcloud.api.dbs.model.DeviceUpgradeHistoryResponse;
+import com.zkcloud.api.dbs.model.DeviceUpgradeRequest;
+import com.zkcloud.api.dbs.model.DeviceUpgradeResponse;
+import com.zkcloud.api.dbs.model.DoorHolidayDeleteRequest;
+import com.zkcloud.api.dbs.model.DoorHolidayUpdateRequest;
+import com.zkcloud.api.dbs.model.DoorParamQueryRequest;
+import com.zkcloud.api.dbs.model.DoorParamQueryResponse;
+import com.zkcloud.api.dbs.model.DoorParamUpdateRequest;
+import com.zkcloud.api.dbs.model.DoorPasswordDeleteRequest;
+import com.zkcloud.api.dbs.model.DoorPasswordOpenRequest;
+import com.zkcloud.api.dbs.model.DoorPasswordUpdateRequest;
+import com.zkcloud.api.dbs.model.DoorPermissionGroupAddDoorRequest;
+import com.zkcloud.api.dbs.model.DoorPermissionGroupAddEmployeeRequest;
+import com.zkcloud.api.dbs.model.DoorPermissionGroupDeleteRequest;
+import com.zkcloud.api.dbs.model.DoorPermissionGroupRemoveDoorRequest;
+import com.zkcloud.api.dbs.model.DoorPermissionGroupRemoveEmployeeRequest;
+import com.zkcloud.api.dbs.model.DoorPermissionGroupUpdateRequest;
+import com.zkcloud.api.dbs.model.DoorQueryRequest;
+import com.zkcloud.api.dbs.model.DoorQueryResponse;
+import com.zkcloud.api.dbs.model.DoorTimeZoneDeleteRequest;
+import com.zkcloud.api.dbs.model.DoorTimeZoneUpdateRequest;
+import com.zkcloud.api.dbs.model.DoorTransactionRecordRequest;
+import com.zkcloud.api.dbs.model.DoorTransactionRecordResponse;
+import com.zkcloud.api.dbs.model.DoorUpdateRequest;
+import com.zkcloud.api.dbs.model.EmployeeBindDeviceRequest;
+import com.zkcloud.api.dbs.model.EmployeeBindDeviceResponse;
+import com.zkcloud.api.dbs.model.EmployeeDeleteBatchRequest;
+import com.zkcloud.api.dbs.model.EmployeeDeleteRequest;
+import com.zkcloud.api.dbs.model.EmployeeDeleteResponse;
+import com.zkcloud.api.dbs.model.EmployeeFaceRequest;
+import com.zkcloud.api.dbs.model.EmployeeFaceResponse;
+import com.zkcloud.api.dbs.model.EmployeeFaceSyncRequest;
+import com.zkcloud.api.dbs.model.EmployeeUnbindDeviceRequest;
+import com.zkcloud.api.dbs.model.EmployeeUnbindDeviceResponse;
+import com.zkcloud.api.dbs.model.EmployeeUpdateBatchRequest;
+import com.zkcloud.api.dbs.model.EmployeeUpdateRequest;
+import com.zkcloud.api.dbs.model.EmployeeUpdateResponse;
+import com.zkcloud.api.dbs.model.FwSeriesRequest;
+import com.zkcloud.api.dbs.model.FwSeriesResponse;
+import com.zkcloud.api.dbs.model.GetTokenResponse;
+import com.zkcloud.api.dbs.model.NewFwVersionsRequest;
+import com.zkcloud.api.dbs.model.NewFwVersionsResponse;
+import com.zkcloud.api.dbs.model.OpenDoorRequest;
+import com.zkcloud.api.dbs.model.OrgBindDeviceRequest;
+import com.zkcloud.api.dbs.model.OrgBindDeviceResponse;
+import com.zkcloud.api.dbs.model.OrgDeleteBatchRequest;
+import com.zkcloud.api.dbs.model.OrgDeleteRequest;
+import com.zkcloud.api.dbs.model.OrgUnbindDeviceRequest;
+import com.zkcloud.api.dbs.model.OrgUnbindDeviceResponse;
+import com.zkcloud.api.dbs.model.OrgUpdateBatchRequest;
+import com.zkcloud.api.dbs.model.OrgUpdateRequest;
+import com.zkcloud.api.dbs.model.OrgUpdateResponse;
+import com.zkcloud.api.dbs.model.PunchRecordByPageRequest;
+import com.zkcloud.api.dbs.model.PunchRecordByPageResponse;
+import com.zkcloud.api.dbs.model.PunchRecordVerifyRequest;
+import com.zkcloud.api.dbs.model.PunchRecordVerifyResponse;
+import com.zkcloud.api.dbs.model.RegisterBiometricRequest;
+import com.zkcloud.api.dbs.model.RegisterBiometricResponse;
+import com.zkcloud.api.dbs.model.RegisterFpRequest;
+import com.zkcloud.api.dbs.model.RegisterFpResponse;
+import com.zkcloud.api.dbs.model.VerifyInfoByDeviceRequest;
+import com.zkcloud.api.dbs.model.VerifyInfoByDeviceResponse;
+import com.zkcloud.api.dbs.model.VerifyInfoByEmployeeRequest;
+import com.zkcloud.api.dbs.model.VerifyInfoByEmployeeResponse;
+import com.zkcloud.api.dbs.model.VerifyInfoRequest;
+import com.zkcloud.api.dbs.model.VerifyInfoResponse;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;
+import okhttp3.Response;
 
 /**
  * DBS接口连接应用
@@ -249,8 +334,7 @@ public class DBSClient extends AbstractClient {
      * @return
      * @throws ZKCloudSDKException
      */
-    public Message<VerifyInfoByEmployeeResponse> verifyInfoByEmployee(VerifyInfoByEmployeeRequest verifyInfoByEmployeeRequest)
-            throws ZKCloudSDKException {
+    public Message<VerifyInfoByEmployeeResponse> verifyInfoByEmployee(VerifyInfoByEmployeeRequest verifyInfoByEmployeeRequest) throws ZKCloudSDKException {
         MessagePayload messagePayload = new MessagePayload();
         messagePayload.setPageSize(verifyInfoByEmployeeRequest.getPageSize());
         messagePayload.setCurPage(verifyInfoByEmployeeRequest.getCurPage());
@@ -573,8 +657,7 @@ public class DBSClient extends AbstractClient {
      * @return
      * @throws ZKCloudSDKException
      */
-    public Message<EmployeeUnbindDeviceResponse> employeeUnBindDevice(EmployeeUnbindDeviceRequest employeeUnbindDeviceRequest)
-            throws ZKCloudSDKException {
+    public Message<EmployeeUnbindDeviceResponse> employeeUnBindDevice(EmployeeUnbindDeviceRequest employeeUnbindDeviceRequest) throws ZKCloudSDKException {
         String response = baseRequest("/v1.0/hr/employee/unbindDevice", employeeUnbindDeviceRequest);
         Type type = new TypeToken<Message<EmployeeUnbindDeviceResponse>>() {
         }.getType();
@@ -683,7 +766,7 @@ public class DBSClient extends AbstractClient {
      * @return
      * @throws ZKCloudSDKException
      */
-    public Message openDoorPassword(DoorPasswordOpenRequest doorPasswordOpenRequest) throws ZKCloudSDKException {
+    public Message openDoorPassword (DoorPasswordOpenRequest doorPasswordOpenRequest) throws ZKCloudSDKException {
         String response = baseRequest("/v1.0/device/doorPassword/open", doorPasswordOpenRequest);
         Type type = new TypeToken<Message>() {
         }.getType();
@@ -767,8 +850,7 @@ public class DBSClient extends AbstractClient {
      * @return
      * @throws ZKCloudSDKException
      */
-    public Message doorPermissionGroupRemoveDoor(DoorPermissionGroupRemoveDoorRequest doorPermissionGroupRemoveDoorRequest)
-            throws ZKCloudSDKException {
+    public Message doorPermissionGroupRemoveDoor(DoorPermissionGroupRemoveDoorRequest doorPermissionGroupRemoveDoorRequest) throws ZKCloudSDKException {
         String response = baseRequest("/v1.0/device/permissionGroup/removeDoor", doorPermissionGroupRemoveDoorRequest);
         Type type = new TypeToken<Message>() {
         }.getType();
@@ -782,8 +864,7 @@ public class DBSClient extends AbstractClient {
      * @return
      * @throws ZKCloudSDKException
      */
-    public Message doorPermissionGroupAddEmployee(DoorPermissionGroupAddEmployeeRequest doorPermissionGroupAddEmployeeRequest)
-            throws ZKCloudSDKException {
+    public Message doorPermissionGroupAddEmployee(DoorPermissionGroupAddEmployeeRequest doorPermissionGroupAddEmployeeRequest) throws ZKCloudSDKException {
         String response = baseRequest("/v1.0/device/permissionGroup/addEmp", doorPermissionGroupAddEmployeeRequest);
         Type type = new TypeToken<Message>() {
         }.getType();
@@ -797,8 +878,7 @@ public class DBSClient extends AbstractClient {
      * @return
      * @throws ZKCloudSDKException
      */
-    public Message doorPermissionGroupRemoveEmployee(DoorPermissionGroupRemoveEmployeeRequest doorPermissionGroupRemoveEmployeeRequest)
-            throws ZKCloudSDKException {
+    public Message doorPermissionGroupRemoveEmployee(DoorPermissionGroupRemoveEmployeeRequest doorPermissionGroupRemoveEmployeeRequest) throws ZKCloudSDKException {
         String response = baseRequest("/v1.0/device/permissionGroup/removeEmp", doorPermissionGroupRemoveEmployeeRequest);
         Type type = new TypeToken<Message>() {
         }.getType();
@@ -840,27 +920,12 @@ public class DBSClient extends AbstractClient {
      * @return
      * @throws ZKCloudSDKException
      */
-    public Message<List<DoorTransactionRecordResponse>> getTransactionRecord(DoorTransactionRecordRequest doorTransactionRecordRequest)
-            throws ZKCloudSDKException {
+    public Message<List<DoorTransactionRecordResponse>> getTransactionRecord(DoorTransactionRecordRequest doorTransactionRecordRequest) throws ZKCloudSDKException {
         MessagePayload messagePayload = new MessagePayload();
         messagePayload.setPageSize(doorTransactionRecordRequest.getPageSize());
         messagePayload.setCurPage(doorTransactionRecordRequest.getCurPage());
         String response = baseRequest("/v1.0/device/event/accTransaction/getByPage", doorTransactionRecordRequest, messagePayload);
         Type type = new TypeToken<Message>() {
-        }.getType();
-        return gson.fromJson(response, type);
-    }
-
-    /**
-     * 获取设备打卡记录
-     *
-     * @param punchRecordRequest
-     * @return
-     * @throws ZKCloudSDKException
-     */
-    public Message<List<PunchRecordResponse>> getPunchRecord(PunchRecordRequest punchRecordRequest) throws ZKCloudSDKException {
-        String response = baseRequest("/v1.0/device/event/punchRecord/get", punchRecordRequest);
-        Type type = new TypeToken<Message<List<PunchRecordResponse>>>() {
         }.getType();
         return gson.fromJson(response, type);
     }
@@ -872,8 +937,7 @@ public class DBSClient extends AbstractClient {
      * @return
      * @throws ZKCloudSDKException
      */
-    public Message<List<PunchRecordByPageResponse>> getPunchRecordByPage(PunchRecordByPageRequest punchRecordByPageRequest)
-            throws ZKCloudSDKException {
+    public Message<List<PunchRecordByPageResponse>> getPunchRecordByPage(PunchRecordByPageRequest punchRecordByPageRequest) throws ZKCloudSDKException {
         MessagePayload messagePayload = new MessagePayload();
         messagePayload.setPageSize(punchRecordByPageRequest.getPageSize());
         messagePayload.setCurPage(punchRecordByPageRequest.getCurPage());
@@ -897,4 +961,61 @@ public class DBSClient extends AbstractClient {
         }.getType();
         return gson.fromJson(response, type);
     }
+
+    /**
+     * getNewVersions
+     * 查询升级版本列表
+     * @param newFwVersionsRequest
+     * @return com.zkcloud.api.dbs.common.Message<com.zkcloud.api.dbs.model.NewFwVersionsResponse>
+     * @throws
+     * @author miller.li
+     * @date 2020/12/31 10:32
+     * @since 1.0.0
+     */
+    public Message<NewFwVersionsResponse> getNewVersions(NewFwVersionsRequest newFwVersionsRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/ufo/device/newest", newFwVersionsRequest);
+        Type type = new TypeToken<Message<NewFwVersionsResponse>>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * deviceUpgrade
+     * 升级固件
+     * @param deviceUpgradeRequest
+     * @return com.zkcloud.api.dbs.common.Message<com.zkcloud.api.dbs.model.DeviceUpgradeResponse>
+     * @throws
+     * @author miller.li
+     * @date 2020/12/31 14:14
+     * @since 1.0.0
+     */
+    public Message<DeviceUpgradeResponse> deviceUpgrade(DeviceUpgradeRequest deviceUpgradeRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/ufo/device/upgrade", deviceUpgradeRequest);
+        Type type = new TypeToken<Message<DeviceUpgradeResponse>>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+
+    public Message<List<DeviceUpgradeHistoryResponse>> getUpgradeHistory(DeviceUpgradeHistoryRequest deviceUpgradeHistoryRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/ufo/device/queryUpgradeHistory", deviceUpgradeHistoryRequest);
+        Type type = new TypeToken<Message<List<DeviceUpgradeHistoryResponse>>>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    public Message<List<DeviceUpgradeBatchResponse>> deviceUpgradeBatch(DeviceUpgradeBatchRequest deviceUpgradeBatchRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/ufo/device/advance", deviceUpgradeBatchRequest);
+        Type type = new TypeToken<Message<List<DeviceUpgradeBatchResponse>>>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    public Message<FwSeriesResponse> getSeries(FwSeriesRequest fwSeriesRequest) throws ZKCloudSDKException{
+        String response = baseRequest("/v1.0/ufo/device/querySeries", fwSeriesRequest);
+        Type type = new TypeToken<Message<FwSeriesResponse>>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
 }

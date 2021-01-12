@@ -16,6 +16,8 @@ public class MessagePayload<T> {
     private Integer totalPages;
     @Expose
     private Integer pageSize;
+    @Expose
+    private String taskId;
 
     public T getParams() {
         return params;
@@ -63,6 +65,14 @@ public class MessagePayload<T> {
 
     public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
+    }
+
+    public String getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(String taskId) {
+        this.taskId = taskId;
     }
 
     @Override

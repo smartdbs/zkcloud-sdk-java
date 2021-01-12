@@ -4,11 +4,6 @@ package com.zkcloud.api.dbs.model;
 import com.google.gson.annotations.Expose;
 
 public class CreateCompanyResponse {
-    /**
-　　  *  公司id
-　　  */
-    @Expose
-    private String companyId;
 
     /**
 　　  *  公司集成账户，接口调用时企业租户安全保障
@@ -20,14 +15,6 @@ public class CreateCompanyResponse {
       */
     @Expose
     private User superUser;
-
-    public String getCompanyId() {
-        return companyId;
-    }
-
-    public void setCompanyId(String companyId) {
-        this.companyId = companyId;
-    }
 
     public User getApiUser() {
         return apiUser;

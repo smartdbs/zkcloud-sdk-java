@@ -26,6 +26,12 @@ import com.zkcloud.api.dbs.model.DeviceRefreshEmployeeRequest;
 import com.zkcloud.api.dbs.model.DeviceReloadEmployeeRequest;
 import com.zkcloud.api.dbs.model.DeviceReloadPunchRequest;
 import com.zkcloud.api.dbs.model.DeviceUpdateRequest;
+import com.zkcloud.api.dbs.model.DeviceUpgradeBatchRequest;
+import com.zkcloud.api.dbs.model.DeviceUpgradeBatchResponse;
+import com.zkcloud.api.dbs.model.DeviceUpgradeHistoryRequest;
+import com.zkcloud.api.dbs.model.DeviceUpgradeHistoryResponse;
+import com.zkcloud.api.dbs.model.DeviceUpgradeRequest;
+import com.zkcloud.api.dbs.model.DeviceUpgradeResponse;
 import com.zkcloud.api.dbs.model.DoorHolidayDeleteRequest;
 import com.zkcloud.api.dbs.model.DoorHolidayUpdateRequest;
 import com.zkcloud.api.dbs.model.DoorParam;
@@ -63,6 +69,10 @@ import com.zkcloud.api.dbs.model.EmployeeUnbindDeviceResponse;
 import com.zkcloud.api.dbs.model.EmployeeUpdateBatchRequest;
 import com.zkcloud.api.dbs.model.EmployeeUpdateRequest;
 import com.zkcloud.api.dbs.model.EmployeeUpdateResponse;
+import com.zkcloud.api.dbs.model.FwSeriesRequest;
+import com.zkcloud.api.dbs.model.FwSeriesResponse;
+import com.zkcloud.api.dbs.model.NewFwVersionsRequest;
+import com.zkcloud.api.dbs.model.NewFwVersionsResponse;
 import com.zkcloud.api.dbs.model.OpenDoorRequest;
 import com.zkcloud.api.dbs.model.OrgBindDeviceRequest;
 import com.zkcloud.api.dbs.model.OrgBindDeviceResponse;
@@ -75,8 +85,6 @@ import com.zkcloud.api.dbs.model.OrgUpdateRequest;
 import com.zkcloud.api.dbs.model.OrgUpdateResponse;
 import com.zkcloud.api.dbs.model.PunchRecordByPageRequest;
 import com.zkcloud.api.dbs.model.PunchRecordByPageResponse;
-import com.zkcloud.api.dbs.model.PunchRecordRequest;
-import com.zkcloud.api.dbs.model.PunchRecordResponse;
 import com.zkcloud.api.dbs.model.PunchRecordVerifyRequest;
 import com.zkcloud.api.dbs.model.PunchRecordVerifyResponse;
 import com.zkcloud.api.dbs.model.RegisterBiometricRequest;
@@ -103,18 +111,17 @@ import org.junit.runners.MethodSorters;
 @FixMethodOrder(MethodSorters.JVM)
 public class DBSClientTest {
 
-        String endpoint = "smartdbs-apigateway.zkclouds.com";
-//    String endpoint = "127.0.0.1:18801";
+    String endpoint = "smartdbs-apigateway.zkclouds.com";
 
-    String appKey = "e117f9e1b70b4789aa415c0ed32d7865";
-    String appSecret = "a486061fe8c148368dfff0e168650079";
+    String appKey = "a3f8ea844d2e40d9a595ec92fab76de9";
+    String appSecret = "6c14263d95eb4a59b9ea8a5756645a82";
     DBSClient client;
 
-    String defaultCompanyCode = "98133515511@qq.com";
-    String defaultCompanyName = "公司";
+    String defaultCompanyCode = "111241";
+    String defaultCompanyName = "414141";
     String defaultCompanyEmail = "981335155@qq.com";
-    String defaultCompanyApiUsername = "9813351551738";
-    String defaultCompanyApiPassword = "b0BWzh";
+    String defaultCompanyApiUsername = "9813351551924";
+    String defaultCompanyApiPassword = "zk123456";
 
 
     @Before
@@ -774,15 +781,6 @@ public class DBSClientTest {
 
 
     @Test
-    public void testGetPunchRecord() throws Exception {
-        PunchRecordRequest punchRecordRequest = new PunchRecordRequest(1604160000L, 1606320000L);
-        punchRecordRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
-        Message<List<PunchRecordResponse>> response = client.getPunchRecord(punchRecordRequest);
-        System.err.println(JSONUtil.toJsonPrettyStr(response));
-        Assert.assertEquals(response.getMessage(), true, ErrorCode.CODE_SUCCESS.equals(response.getCode()));
-    }
-
-    @Test
     public void testGetPunchRecordByPage() throws Exception {
         PunchRecordByPageRequest punchRecordByPageRequest = new PunchRecordByPageRequest(1604160000L, 1606320000L, 1604160000L, 1606320000L, 1, 10);
         punchRecordByPageRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
@@ -799,4 +797,58 @@ public class DBSClientTest {
         System.err.println(JSONUtil.toJsonPrettyStr(response));
         Assert.assertEquals(response.getMessage(), true, ErrorCode.CODE_SUCCESS.equals(response.getCode()));
     }
+
+    @Test
+    public void testGetNewVersions() throws Exception {
+        NewFwVersionsRequest newFwVersionsRequest = new NewFwVersionsRequest("设备序列号");
+        newFwVersionsRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message<NewFwVersionsResponse> response = client.getNewVersions(newFwVersionsRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), true, ErrorCode.CODE_SUCCESS.equals(response.getCode()));
+    }
+
+    @Test
+    public void testDeviceUpgrade() throws Exception {
+        DeviceUpgradeRequest deviceUpgradeRequest = new DeviceUpgradeRequest("设备序列号", "版本号");
+        deviceUpgradeRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message<DeviceUpgradeResponse> response = client.deviceUpgrade(deviceUpgradeRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), true, ErrorCode.CODE_SUCCESS.equals(response.getCode()));
+    }
+
+    @Test
+    public void testGetUpgradeHistory() throws Exception {
+        DeviceUpgradeHistoryRequest deviceUpgradeHistoryRequest = new DeviceUpgradeHistoryRequest("设备序列号");
+        deviceUpgradeHistoryRequest.setCurPage(1);
+        deviceUpgradeHistoryRequest.setPageSize(3);
+        deviceUpgradeHistoryRequest.setTaskId("任务id");
+        deviceUpgradeHistoryRequest.setBeginTime(1609323497996L);
+        deviceUpgradeHistoryRequest.setEndTime(1609323497996L);
+        deviceUpgradeHistoryRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message<List<DeviceUpgradeHistoryResponse>> response = client.getUpgradeHistory(deviceUpgradeHistoryRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), true, ErrorCode.CODE_SUCCESS.equals(response.getCode()));
+    }
+
+    @Test
+    public void testDeviceUpgradeBatch() throws Exception {
+        List<String> list = new ArrayList<String>();
+        list.add("设备序列号1");
+        list.add("设备序列号2");
+        DeviceUpgradeBatchRequest deviceUpgradeBatchRequest = new DeviceUpgradeBatchRequest(list,"版本号");
+        deviceUpgradeBatchRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message<List<DeviceUpgradeBatchResponse>> response = client.deviceUpgradeBatch(deviceUpgradeBatchRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), true, ErrorCode.CODE_SUCCESS.equals(response.getCode()));
+    }
+
+    @Test
+    public void testGetSeries() throws Exception{
+        FwSeriesRequest fwSeriesRequest = new FwSeriesRequest("ZK-Android-TDB03");
+        fwSeriesRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message<FwSeriesResponse> response = client.getSeries(fwSeriesRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), true, ErrorCode.CODE_SUCCESS.equals(response.getCode()));
+    }
+
 } 
