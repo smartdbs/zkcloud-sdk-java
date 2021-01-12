@@ -822,8 +822,8 @@ public class DBSClientTest {
         deviceUpgradeHistoryRequest.setCurPage(1);
         deviceUpgradeHistoryRequest.setPageSize(3);
         deviceUpgradeHistoryRequest.setTaskId("任务id");
-        deviceUpgradeHistoryRequest.setBeginTime(1609323497996L);
-        deviceUpgradeHistoryRequest.setEndTime(1609323497996L);
+        deviceUpgradeHistoryRequest.setBeginTime(1609323497L);
+        deviceUpgradeHistoryRequest.setEndTime(1609323497L);
         deviceUpgradeHistoryRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
         Message<List<DeviceUpgradeHistoryResponse>> response = client.getUpgradeHistory(deviceUpgradeHistoryRequest);
         System.err.println(JSONUtil.toJsonPrettyStr(response));

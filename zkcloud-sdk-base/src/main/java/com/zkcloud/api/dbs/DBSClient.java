@@ -996,14 +996,36 @@ public class DBSClient extends AbstractClient {
         return gson.fromJson(response, type);
     }
 
-
+    /**
+     * getUpgradeHistory
+     * 查询设备升级历史
+     * @param deviceUpgradeHistoryRequest
+     * @return com.zkcloud.api.dbs.common.Message<java.util.List < com.zkcloud.api.dbs.model.DeviceUpgradeHistoryResponse>>
+     * @throws
+     * @author miller.li
+     * @date 2021/1/7 9:17
+     * @since 1.0.0
+     */
     public Message<List<DeviceUpgradeHistoryResponse>> getUpgradeHistory(DeviceUpgradeHistoryRequest deviceUpgradeHistoryRequest) throws ZKCloudSDKException {
-        String response = baseRequest("/v1.0/ufo/device/queryUpgradeHistory", deviceUpgradeHistoryRequest);
+        MessagePayload messagePayload = new MessagePayload();
+        messagePayload.setPageSize(deviceUpgradeHistoryRequest.getPageSize());
+        messagePayload.setCurPage(deviceUpgradeHistoryRequest.getCurPage());
+        String response = baseRequest("/v1.0/ufo/device/queryUpgradeHistory", deviceUpgradeHistoryRequest, messagePayload);
         Type type = new TypeToken<Message<List<DeviceUpgradeHistoryResponse>>>() {
         }.getType();
         return gson.fromJson(response, type);
     }
-
+    
+    /**
+     * deviceUpgradeBatch
+     *  批量升级
+     * @param deviceUpgradeBatchRequest
+     * @return com.zkcloud.api.dbs.common.Message<java.util.List < com.zkcloud.api.dbs.model.DeviceUpgradeBatchResponse>>
+     * @throws
+     * @author miller.li
+     * @date 2021/1/7 9:19
+     * @since 1.0.0
+     */
     public Message<List<DeviceUpgradeBatchResponse>> deviceUpgradeBatch(DeviceUpgradeBatchRequest deviceUpgradeBatchRequest) throws ZKCloudSDKException {
         String response = baseRequest("/v1.0/ufo/device/advance", deviceUpgradeBatchRequest);
         Type type = new TypeToken<Message<List<DeviceUpgradeBatchResponse>>>() {
@@ -1011,6 +1033,16 @@ public class DBSClient extends AbstractClient {
         return gson.fromJson(response, type);
     }
 
+    /**
+     * getSeries
+     * 固件系列版本
+     * @param fwSeriesRequest
+     * @return com.zkcloud.api.dbs.common.Message<com.zkcloud.api.dbs.model.FwSeriesResponse>
+     * @throws
+     * @author miller.li
+     * @date 2021/1/7 9:20
+     * @since 1.0.0
+     */
     public Message<FwSeriesResponse> getSeries(FwSeriesRequest fwSeriesRequest) throws ZKCloudSDKException{
         String response = baseRequest("/v1.0/ufo/device/querySeries", fwSeriesRequest);
         Type type = new TypeToken<Message<FwSeriesResponse>>() {

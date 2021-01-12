@@ -16,6 +16,12 @@ public class NewFwVersion {
     @Expose
     private String url;
 
+    /**
+     * 描述
+     */
+    @Expose
+    private String description;
+
     public String getVersion() {
         return version;
     }
@@ -30,5 +36,13 @@ public class NewFwVersion {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

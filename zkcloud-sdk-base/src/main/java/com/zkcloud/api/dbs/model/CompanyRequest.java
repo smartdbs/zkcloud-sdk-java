@@ -115,6 +115,18 @@ public class CompanyRequest extends AbstractModel {
     @Expose
     private Long lastUpdateTimeStamp;
 
+    /**
+     * 联系人，姓
+     */
+    @Expose
+    private String lastName;
+
+    /**
+     * 联系人，名
+     */
+    @Expose
+    private String firstName;
+
     public String getCompanyCode() {
         return companyCode;
     }
@@ -276,5 +288,21 @@ public class CompanyRequest extends AbstractModel {
 
     public CompanyRequest(String companyName) {
         this.companyName = companyName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 }
