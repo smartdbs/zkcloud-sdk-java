@@ -1027,7 +1027,7 @@ public class DBSClient extends AbstractClient {
      * @since 1.0.0
      */
     public Message<List<DeviceUpgradeBatchResponse>> deviceUpgradeBatch(DeviceUpgradeBatchRequest deviceUpgradeBatchRequest) throws ZKCloudSDKException {
-        String response = baseRequest("/v1.0/ufo/device/advance", deviceUpgradeBatchRequest);
+        String response = baseRequest("/v1.0/ufo/devices/upgrade", deviceUpgradeBatchRequest);
         Type type = new TypeToken<Message<List<DeviceUpgradeBatchResponse>>>() {
         }.getType();
         return gson.fromJson(response, type);
