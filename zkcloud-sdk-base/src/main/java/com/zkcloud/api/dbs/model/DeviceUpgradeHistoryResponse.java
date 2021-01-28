@@ -2,7 +2,6 @@ package com.zkcloud.api.dbs.model;
 
 
 import com.google.gson.annotations.Expose;
-import com.zkcloud.api.dbs.common.AbstractModel;
 
 public class DeviceUpgradeHistoryResponse{
 
@@ -61,13 +60,13 @@ public class DeviceUpgradeHistoryResponse{
     private Long effectiveTimestamp;
 
     /**
-     * 真实结束的时间
+     * 升级结束时间
      */
     @Expose
     private Long completionTimestamp;
 
     /**
-     * 升级操作来源 0服务端升级 1设备端主动升级 2调用DBS主动升级
+     * 升级操作发起来源 0:软件 1:设备
      */
     @Expose
     private Integer source;
