@@ -13,7 +13,7 @@
  <dependency>
    <groupId>com.zkteco</groupId>
    <artifactId>zkcloud-sdk-base</artifactId>
-   <version>1.1.1</version>
+   <version>1.2.0</version>
  </dependency>
 ```
 <br/>3.引用方法可参考示例。
