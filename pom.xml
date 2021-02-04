@@ -11,7 +11,7 @@
 
     <name>${project.groupId}:${project.artifactId}</name>
     <url>https://github.com/smartdbs/zkcloud-sdk-java</url>
-    <description>Communication security data encryption</description>
+    <description>Smart DBS Open API SDK for Java Parent</description>
 
     <modules>
         <module>zkcloud-sdk-base</module>
