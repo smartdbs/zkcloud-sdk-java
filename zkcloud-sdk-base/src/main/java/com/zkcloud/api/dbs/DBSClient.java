@@ -46,9 +46,12 @@ import com.zkcloud.api.dbs.model.DoorPasswordUpdateRequest;
 import com.zkcloud.api.dbs.model.DoorPermissionGroupAddDoorRequest;
 import com.zkcloud.api.dbs.model.DoorPermissionGroupAddEmployeeRequest;
 import com.zkcloud.api.dbs.model.DoorPermissionGroupDeleteRequest;
+import com.zkcloud.api.dbs.model.DoorPermissionGroupRemoveAllEmployeeRequest;
 import com.zkcloud.api.dbs.model.DoorPermissionGroupRemoveDoorRequest;
 import com.zkcloud.api.dbs.model.DoorPermissionGroupRemoveEmployeeRequest;
 import com.zkcloud.api.dbs.model.DoorPermissionGroupUpdateRequest;
+import com.zkcloud.api.dbs.model.DoorQRCodeRequest;
+import com.zkcloud.api.dbs.model.DoorQRCodeResponse;
 import com.zkcloud.api.dbs.model.DoorQueryRequest;
 import com.zkcloud.api.dbs.model.DoorQueryResponse;
 import com.zkcloud.api.dbs.model.DoorTimeZoneDeleteRequest;
@@ -886,6 +889,21 @@ public class DBSClient extends AbstractClient {
     }
 
     /**
+     * 门禁权限组移除全部人
+     *
+     * @param doorPermissionGroupRemoveAllEmployeeRequest
+     * @return
+     * @throws ZKCloudSDKException
+     */
+    public Message doorPermissionGroupRemoveAllEmployee(DoorPermissionGroupRemoveAllEmployeeRequest doorPermissionGroupRemoveAllEmployeeRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/permissionGroup/removeAllEmp", doorPermissionGroupRemoveAllEmployeeRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+
+    /**
      * 更新门禁节假日
      *
      * @param doorHolidayUpdateRequest
@@ -909,6 +927,20 @@ public class DBSClient extends AbstractClient {
     public Message deleteDoorHoliday(DoorHolidayDeleteRequest doorHolidayDeleteRequest) throws ZKCloudSDKException {
         String response = baseRequest("/v1.0/device/holiday/delete", doorHolidayDeleteRequest);
         Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * 获取门禁二维码
+     *
+     * @param doorQRCodeRequest
+     * @return
+     * @throws ZKCloudSDKException
+     */
+    public Message getQRCode(DoorQRCodeRequest doorQRCodeRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/QRCode/obtain", doorQRCodeRequest);
+        Type type = new TypeToken<Message<DoorQRCodeResponse>>() {
         }.getType();
         return gson.fromJson(response, type);
     }

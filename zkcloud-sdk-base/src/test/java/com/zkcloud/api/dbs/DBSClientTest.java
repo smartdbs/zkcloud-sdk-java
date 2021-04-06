@@ -45,9 +45,12 @@ import com.zkcloud.api.dbs.model.DoorPermissionGroupAddDoorDevice;
 import com.zkcloud.api.dbs.model.DoorPermissionGroupAddDoorRequest;
 import com.zkcloud.api.dbs.model.DoorPermissionGroupAddEmployeeRequest;
 import com.zkcloud.api.dbs.model.DoorPermissionGroupDeleteRequest;
+import com.zkcloud.api.dbs.model.DoorPermissionGroupRemoveAllEmployeeRequest;
 import com.zkcloud.api.dbs.model.DoorPermissionGroupRemoveDoorRequest;
 import com.zkcloud.api.dbs.model.DoorPermissionGroupRemoveEmployeeRequest;
 import com.zkcloud.api.dbs.model.DoorPermissionGroupUpdateRequest;
+import com.zkcloud.api.dbs.model.DoorQRCodeRequest;
+import com.zkcloud.api.dbs.model.DoorQRCodeResponse;
 import com.zkcloud.api.dbs.model.DoorQueryRequest;
 import com.zkcloud.api.dbs.model.DoorQueryResponse;
 import com.zkcloud.api.dbs.model.DoorTimeZoneDeleteRequest;
@@ -750,6 +753,14 @@ public class DBSClientTest {
         Assert.assertEquals(response.getMessage(), true, ErrorCode.CODE_SUCCESS.equals(response.getCode()));
     }
 
+    @Test
+    public void testDoorPermissionGroupRemoveAllEmployee() throws Exception {
+        DoorPermissionGroupRemoveAllEmployeeRequest doorPermissionGroupRemoveAllEmployeeRequest = new DoorPermissionGroupRemoveAllEmployeeRequest(200);
+        doorPermissionGroupRemoveAllEmployeeRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.doorPermissionGroupRemoveAllEmployee(doorPermissionGroupRemoveAllEmployeeRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), true, ErrorCode.CODE_SUCCESS.equals(response.getCode()));
+    }
 
     @Test
     public void testUpdateDoorHoliday() throws Exception {
@@ -769,6 +780,16 @@ public class DBSClientTest {
         Assert.assertEquals(response.getMessage(), true, ErrorCode.CODE_SUCCESS.equals(response.getCode()));
     }
 
+    @Test
+    public void testGetQRCode() throws Exception {
+        DoorQRCodeRequest doorQRCodeRequest = new DoorQRCodeRequest("123123");
+        doorQRCodeRequest.setCreateTime(1614219284L);
+        doorQRCodeRequest.setValidTime(System.currentTimeMillis());
+        doorQRCodeRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message<DoorQRCodeResponse> response = client.getQRCode(doorQRCodeRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), true, ErrorCode.CODE_SUCCESS.equals(response.getCode()));
+    }
 
     @Test
     public void testGetTransactionRecord() throws Exception {

@@ -9,11 +9,54 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeUpdateRequest extends AbstractModel {
+
     /**
      * 员工编号，长度不超过9字节
      */
     @Expose
     private String employeeNo;
+
+    /**
+     * 个人身份证号或者身份证物理卡号
+     */
+    @Expose
+    private String idCard;
+
+    /**
+     * 证件类型. (1 - 身份证(默认)，2 - 外国人永居证，3 - 港澳台居民居住证)
+     */
+    @Expose
+    private String cardType;
+
+    /**
+     * 人员临时状态.(0 - 否，1 - 是)，默认为空
+     */
+    @Expose
+    private String temporaryStatus;
+
+    /**
+     * 人员允许状态.(1 - 允许名单，0 - 禁止名单)，默认为空
+     */
+    @Expose
+    private String allowStatus;
+
+    /**
+     * 人员白名单有效期开始时间, ISO标准时间格式:yyyy-MM-ddTHH:mm:ss±HH:mm, (yyyy-MM-ddTHH:mm:ss):服务端的本地时间, (±HH:mm):服务端的时区
+     */
+    @Expose
+    private String startTime;
+
+    /**
+     * 人员白名单有效期结束时间, ISO标准时间格式:yyyy-MM-ddTHH:mm:ss±HH:mm, (yyyy-MM-ddTHH:mm:ss):服务端的本地时间, (±HH:mm):服务端的时区
+     */
+    @Expose
+    private String endTime;
+
+    /**
+     * 白名单人员在有效时间区间内，允许核验成功总次数，每核验成功一次，总次数-1
+     */
+    @Expose
+    private String validCount;
 
     /**
      * 名
@@ -275,7 +318,72 @@ public class EmployeeUpdateRequest extends AbstractModel {
         this.lastUpdateTimeStamp = lastUpdateTimeStamp;
     }
 
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
+    }
+
+    public String getCardType() {
+        return cardType;
+    }
+
+    public void setCardType(String cardType) {
+        this.cardType = cardType;
+    }
+
+    public String getTemporaryStatus() {
+        return temporaryStatus;
+    }
+
+    public void setTemporaryStatus(String temporaryStatus) {
+        this.temporaryStatus = temporaryStatus;
+    }
+
+    public String getAllowStatus() {
+        return allowStatus;
+    }
+
+    public void setAllowStatus(String allowStatus) {
+        this.allowStatus = allowStatus;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    public String getValidCount() {
+        return validCount;
+    }
+
+    public void setValidCount(String validCount) {
+        this.validCount = validCount;
+    }
+
     public EmployeeUpdateRequest() {
+        this.active = 1;
+        this.lastUpdateTimeStamp = DateUtil.currentSeconds();
+    }
+
+    public EmployeeUpdateRequest(String employeeNo, String firstName) {
+        this.employeeNo = employeeNo;
+        this.firstName = firstName;
+        this.active = 1;
+        this.lastUpdateTimeStamp = DateUtil.currentSeconds();
     }
 
     public EmployeeUpdateRequest(String employeeNo, String firstName, String lastName) {
