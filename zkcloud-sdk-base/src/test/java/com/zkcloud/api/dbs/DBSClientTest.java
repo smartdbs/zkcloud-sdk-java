@@ -872,4 +872,4 @@ public class DBSClientTest {
         Assert.assertEquals(response.getMessage(), true, ErrorCode.CODE_SUCCESS.equals(response.getCode()));
     }
 
-} 
+}
