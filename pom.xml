@@ -16,7 +16,7 @@
     <modules>
         <module>zkcloud-sdk-base</module>
         <!-- 第三方应用服务简化版demo，若需功能更详尽的demo样例源码，请前往 https://github.com/smartdbs/SmartDBS-Demo 下载  -->
-        <!--<module>zkcloud-dbs-3rd</module>-->
+        <module>zkcloud-dbs-3rd</module>
     </modules>
 
     <!-- 许可证信息 -->
