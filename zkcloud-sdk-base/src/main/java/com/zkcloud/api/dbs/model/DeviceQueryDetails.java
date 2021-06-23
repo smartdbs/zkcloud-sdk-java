@@ -111,6 +111,12 @@ public class DeviceQueryDetails {
     @Expose
     private String supportRemotePalmPrint;
 
+    /**
+     * 是否支持远程登记近红外人脸，0不支持，1支持，2未知
+     */
+    @Expose
+    private String supportRemoteFace;
+
     public String getProtocol() {
         return protocol;
     }
@@ -253,5 +259,13 @@ public class DeviceQueryDetails {
 
     public void setSupportRemotePalmPrint(String supportRemotePalmPrint) {
         this.supportRemotePalmPrint = supportRemotePalmPrint;
+    }
+
+    public String getSupportRemoteFace() {
+        return supportRemoteFace;
+    }
+
+    public void setSupportRemoteFace(String supportRemoteFace) {
+        this.supportRemoteFace = supportRemoteFace;
     }
 }
