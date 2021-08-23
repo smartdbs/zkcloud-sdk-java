@@ -8,6 +8,15 @@ import com.zkcloud.api.dbs.common.constant.ErrorCode;
 import com.zkcloud.api.dbs.common.profile.HttpProfile;
 import com.zkcloud.api.dbs.common.profile.Language;
 import com.zkcloud.api.dbs.exception.ZKCloudSDKException;
+import com.zkcloud.api.dbs.model.AlarmCancelRequest;
+import com.zkcloud.api.dbs.model.AntiPassBackDeleteRequest;
+import com.zkcloud.api.dbs.model.AntiPassBackUpdateRequest;
+import com.zkcloud.api.dbs.model.AuxInQueryRequest;
+import com.zkcloud.api.dbs.model.AuxInQueryResponse;
+import com.zkcloud.api.dbs.model.AuxInUpdateRequest;
+import com.zkcloud.api.dbs.model.AuxOutQueryRequest;
+import com.zkcloud.api.dbs.model.AuxOutQueryResponse;
+import com.zkcloud.api.dbs.model.AuxOutUpdateRequest;
 import com.zkcloud.api.dbs.model.BiotemplateRequest;
 import com.zkcloud.api.dbs.model.CancelRegisterBiometricRequest;
 import com.zkcloud.api.dbs.model.CancelRegisterFpRequest;
@@ -22,6 +31,14 @@ import com.zkcloud.api.dbs.model.DeviceEnableRequest;
 import com.zkcloud.api.dbs.model.DeviceQueryRequest;
 import com.zkcloud.api.dbs.model.DeviceQueryResponse;
 import com.zkcloud.api.dbs.model.DeviceRebootRequest;
+import com.zkcloud.api.dbs.model.FirstOpenDeleteRequest;
+import com.zkcloud.api.dbs.model.FirstOpenUpdateRequest;
+import com.zkcloud.api.dbs.model.InterLockDeleteRequest;
+import com.zkcloud.api.dbs.model.InterLockUpdateRequest;
+import com.zkcloud.api.dbs.model.LinkageDeleteRequest;
+import com.zkcloud.api.dbs.model.LinkageUpdateRequest;
+import com.zkcloud.api.dbs.model.ReloadDeviceInfoRequest;
+import com.zkcloud.api.dbs.model.ReloadDeviceRecordRequest;
 import com.zkcloud.api.dbs.model.DeviceRefreshEmployeeRequest;
 import com.zkcloud.api.dbs.model.DeviceReloadEmployeeRequest;
 import com.zkcloud.api.dbs.model.DeviceReloadPunchRequest;
@@ -32,6 +49,7 @@ import com.zkcloud.api.dbs.model.DeviceUpgradeHistoryRequest;
 import com.zkcloud.api.dbs.model.DeviceUpgradeHistoryResponse;
 import com.zkcloud.api.dbs.model.DeviceUpgradeRequest;
 import com.zkcloud.api.dbs.model.DeviceUpgradeResponse;
+import com.zkcloud.api.dbs.model.DoorCloseRequest;
 import com.zkcloud.api.dbs.model.DoorHolidayDeleteRequest;
 import com.zkcloud.api.dbs.model.DoorHolidayUpdateRequest;
 import com.zkcloud.api.dbs.model.DoorParam;
@@ -67,6 +85,8 @@ import com.zkcloud.api.dbs.model.EmployeeDeleteResponse;
 import com.zkcloud.api.dbs.model.EmployeeFaceRequest;
 import com.zkcloud.api.dbs.model.EmployeeFaceResponse;
 import com.zkcloud.api.dbs.model.EmployeeFaceSyncRequest;
+import com.zkcloud.api.dbs.model.EmployeeGroupDeleteRequest;
+import com.zkcloud.api.dbs.model.EmployeeGroupUpdateRequest;
 import com.zkcloud.api.dbs.model.EmployeeUnbindDeviceRequest;
 import com.zkcloud.api.dbs.model.EmployeeUnbindDeviceResponse;
 import com.zkcloud.api.dbs.model.EmployeeUpdateBatchRequest;
@@ -74,8 +94,12 @@ import com.zkcloud.api.dbs.model.EmployeeUpdateRequest;
 import com.zkcloud.api.dbs.model.EmployeeUpdateResponse;
 import com.zkcloud.api.dbs.model.FwSeriesRequest;
 import com.zkcloud.api.dbs.model.FwSeriesResponse;
+import com.zkcloud.api.dbs.model.LockGateRequest;
+import com.zkcloud.api.dbs.model.MultiGroupDeleteRequest;
+import com.zkcloud.api.dbs.model.MultiGroupUpdateRequest;
 import com.zkcloud.api.dbs.model.NewFwVersionsRequest;
 import com.zkcloud.api.dbs.model.NewFwVersionsResponse;
+import com.zkcloud.api.dbs.model.NormalOpenRequest;
 import com.zkcloud.api.dbs.model.OpenDoorRequest;
 import com.zkcloud.api.dbs.model.OrgBindDeviceRequest;
 import com.zkcloud.api.dbs.model.OrgBindDeviceResponse;
@@ -90,11 +114,31 @@ import com.zkcloud.api.dbs.model.PunchRecordByPageRequest;
 import com.zkcloud.api.dbs.model.PunchRecordByPageResponse;
 import com.zkcloud.api.dbs.model.PunchRecordVerifyRequest;
 import com.zkcloud.api.dbs.model.PunchRecordVerifyResponse;
+import com.zkcloud.api.dbs.model.ReaderParam;
+import com.zkcloud.api.dbs.model.ReaderParamQueryRequest;
+import com.zkcloud.api.dbs.model.ReaderParamQueryResponse;
+import com.zkcloud.api.dbs.model.ReaderParamUpdateRequest;
+import com.zkcloud.api.dbs.model.ReaderQueryRequest;
+import com.zkcloud.api.dbs.model.ReaderQueryResponse;
+import com.zkcloud.api.dbs.model.ReaderUpdateRequest;
 import com.zkcloud.api.dbs.model.RegisterBiometricRequest;
 import com.zkcloud.api.dbs.model.RegisterBiometricResponse;
 import com.zkcloud.api.dbs.model.RegisterFpRequest;
 import com.zkcloud.api.dbs.model.RegisterFpResponse;
+import com.zkcloud.api.dbs.model.SuperUserDeleteRequest;
+import com.zkcloud.api.dbs.model.SuperUserUpdateRequest;
+import com.zkcloud.api.dbs.model.TimeSyncRequest;
+import com.zkcloud.api.dbs.model.TodayNormalOpenRequest;
+import com.zkcloud.api.dbs.model.TriggerData;
+import com.zkcloud.api.dbs.model.TriggerListDeleteRequest;
+import com.zkcloud.api.dbs.model.TriggerListUpdateRequest;
 import com.zkcloud.api.dbs.model.User;
+import com.zkcloud.api.dbs.model.UserAntiPassBackDeleteRequest;
+import com.zkcloud.api.dbs.model.UserAntiPassBackUpdateRequest;
+import com.zkcloud.api.dbs.model.UserInterLockDeleteRequest;
+import com.zkcloud.api.dbs.model.UserInterLockUpdateRequest;
+import com.zkcloud.api.dbs.model.UserLinkageDeleteRequest;
+import com.zkcloud.api.dbs.model.UserLinkageUpdateRequest;
 import com.zkcloud.api.dbs.model.VerifyInfoByDeviceRequest;
 import com.zkcloud.api.dbs.model.VerifyInfoByDeviceResponse;
 import com.zkcloud.api.dbs.model.VerifyInfoByEmployeeRequest;
@@ -872,4 +916,376 @@ public class DBSClientTest {
         Assert.assertEquals(response.getMessage(), true, ErrorCode.CODE_SUCCESS.equals(response.getCode()));
     }
 
-}
+    @Test
+    public void testUpdateFirstOpen() throws Exception {
+        String[] employees = new String[]{"员工编号01","员工编号02"};
+        FirstOpenUpdateRequest cardUpdateRequest = new FirstOpenUpdateRequest("10001", 1, employees, 1);
+        cardUpdateRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.updateFirstOpen(cardUpdateRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testDeleteFirstOpen() throws Exception {
+        Integer[] doorNums = new Integer[]{1,2};
+        FirstOpenDeleteRequest firstCardDeleteRequest = new FirstOpenDeleteRequest("10001", doorNums);
+        firstCardDeleteRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.deleteFirstOpen(firstCardDeleteRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testUpdateEmployeeGroup() throws Exception {
+        String[] employees = new String[]{"员工编号01","员工编号02"};
+        EmployeeGroupUpdateRequest employeeGroupUpdateRequest = new EmployeeGroupUpdateRequest(1, employees);
+        employeeGroupUpdateRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.updateEmployeeGroup(employeeGroupUpdateRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testDeleteEmployeeGroup() throws Exception {
+        EmployeeGroupDeleteRequest employeeDeleteRequest = new EmployeeGroupDeleteRequest(1);
+        employeeDeleteRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.deleteEmployeeGroup(employeeDeleteRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+
+    @Test
+    public void testUpdateMultiGroup() throws Exception {
+        Integer[] groups = new Integer[]{1,2};
+        MultiGroupUpdateRequest multiGroupUpdateRequest = new MultiGroupUpdateRequest(1, "10001", 1,groups );
+        multiGroupUpdateRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.updateMultiGroup(multiGroupUpdateRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+
+    @Test
+    public void testDeleteMultiGroup() throws Exception {
+        MultiGroupDeleteRequest multiGroupDeleteRequest = new MultiGroupDeleteRequest(1);
+        multiGroupDeleteRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.deleteMultiGroup(multiGroupDeleteRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+
+    @Test
+    public void testUpdateSuperUser() throws Exception {
+        SuperUserUpdateRequest superUserUpdateRequest = new SuperUserUpdateRequest("员工编号01");
+        superUserUpdateRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.updateSuperUser(superUserUpdateRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+
+    @Test
+    public void testDeleteSuperUser() throws Exception {
+        SuperUserDeleteRequest superUserDeleteRequest = new SuperUserDeleteRequest("员工编号01");
+        superUserDeleteRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.deleteSuperUser(superUserDeleteRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testCloseDoor() throws Exception {
+        DoorCloseRequest doorCloseRequest = new DoorCloseRequest("设备序列号");
+        doorCloseRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.closeDoor(doorCloseRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testNormalOpen() throws Exception {
+        NormalOpenRequest normalOpenRequest = new NormalOpenRequest("设备序列号");
+        normalOpenRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.normalOpen(normalOpenRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testTodayNormalOpen() throws Exception {
+        TodayNormalOpenRequest todayNormalOpenRequest = new TodayNormalOpenRequest("设备序列号");
+        todayNormalOpenRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.todayNormalOpen(todayNormalOpenRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testLockGate() throws Exception {
+        LockGateRequest lockGateRequest = new LockGateRequest("设备序列号");
+        lockGateRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.lockGate(lockGateRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testUpdateReader() throws Exception {
+        ReaderUpdateRequest readerUpdateRequest = new ReaderUpdateRequest("设备序列号",2);
+        readerUpdateRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.updateReader(readerUpdateRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testQueryReader() throws Exception {
+        ReaderQueryRequest readerQueryRequest = new ReaderQueryRequest("设备序列号");
+        readerQueryRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message<List<ReaderQueryResponse>> response = client.queryReader(readerQueryRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testUpdateReaderParam() throws Exception {
+        List<ReaderParam> readerParams = new ArrayList<ReaderParam>();
+        readerParams.add(new ReaderParam("name1", "value1"));
+        readerParams.add(new ReaderParam("name2", "value2"));
+        ReaderParamUpdateRequest readerParamUpdateRequest = new ReaderParamUpdateRequest("设备序列号", 1, readerParams);
+        readerParamUpdateRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.updateReaderParam(readerParamUpdateRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+
+    @Test
+    public void testQueryReaderParam() throws Exception {
+        ReaderParamQueryRequest readerParamQueryRequest = new ReaderParamQueryRequest("设备序列号");
+        readerParamQueryRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message<List<ReaderParamQueryResponse>> response = client.queryReaderParam(readerParamQueryRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testCancelAlarm() throws Exception {
+        AlarmCancelRequest alarmCancelRequest = new AlarmCancelRequest("设备序列号");
+        alarmCancelRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.cancelAlarm(alarmCancelRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testReloadRecord() throws Exception {
+        ReloadDeviceRecordRequest deviceRecordlRequest = new ReloadDeviceRecordRequest("设备序列号",1492617600L, 1492790400L);
+        deviceRecordlRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.reloadRecord(deviceRecordlRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+
+    @Test
+    public void testReloadDeviceInfo() throws Exception {
+        ReloadDeviceInfoRequest reloadDeviceInfoRequest = new ReloadDeviceInfoRequest("设备序列号");
+        reloadDeviceInfoRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.reloadDeviceInfo(reloadDeviceInfoRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testSyncTime() throws Exception {
+        TimeSyncRequest timeSyncRequest = new TimeSyncRequest("设备序列号");
+        timeSyncRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.syncTime(timeSyncRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testUpdateLinkage() throws Exception {
+        LinkageUpdateRequest linkageUpdateRequest = new LinkageUpdateRequest("设备序列号", 0, 0,0,0,0,0);
+        linkageUpdateRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.updateLinkage(linkageUpdateRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testDeleteLinkage() throws Exception {
+        Integer[] linkageNums = new Integer[]{1,2,3};
+        LinkageDeleteRequest linkageDeleteRequest = new LinkageDeleteRequest("设备序列号", linkageNums);
+        linkageDeleteRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.deleteLinkage(linkageDeleteRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+
+    @Test
+    public void testUpdateUserLinkage() throws Exception {
+        String[] employeeNos = new String[]{"aaa","bbb"};
+        UserLinkageUpdateRequest userLinkageUpdateRequest = new UserLinkageUpdateRequest("设备序列号", 0, employeeNos);
+        userLinkageUpdateRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.updateUserLinkage(userLinkageUpdateRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testDeleteUserLinkage() throws Exception {
+        Integer[] linkageNums = new Integer[]{1,2,3};
+        UserLinkageDeleteRequest userLinkageDeleteRequest = new UserLinkageDeleteRequest("设备序列号", linkageNums);
+        userLinkageDeleteRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.deleteUserLinkage(userLinkageDeleteRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testUpdateAntiPassBack() throws Exception {
+        AntiPassBackUpdateRequest antiPassBackUpdateRequest = new AntiPassBackUpdateRequest("设备序列号", 0, 0, 0);
+        antiPassBackUpdateRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.updateAntiPassBack(antiPassBackUpdateRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testDeleteAntiPassBack() throws Exception {
+        Integer[] antiPassBackNums = new Integer[]{1,2,3};
+        AntiPassBackDeleteRequest antiPassBackDeleteRequest = new AntiPassBackDeleteRequest("设备序列号",antiPassBackNums);
+        antiPassBackDeleteRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.deleteAntiPassBack(antiPassBackDeleteRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testUpdateUserAntiPassBack() throws Exception {
+        String[] employeeNos = new String[]{};
+        UserAntiPassBackUpdateRequest userAntiPassBackUpdateRequest = new UserAntiPassBackUpdateRequest("设备序列号", 0, employeeNos);
+        userAntiPassBackUpdateRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.updateUserAntiPassBack(userAntiPassBackUpdateRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testDeleteUserAntiPassBack() throws Exception {
+        Integer[] antiPassBackNums = new Integer[]{1,2,3};
+        UserAntiPassBackDeleteRequest userAntiPassBackDeleteRequest = new UserAntiPassBackDeleteRequest("设备序列号",antiPassBackNums);
+        userAntiPassBackDeleteRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.deleteUserAntiPassBack(userAntiPassBackDeleteRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testUpdateInterLock() throws Exception {
+        InterLockUpdateRequest interLockUpdateRequest = new InterLockUpdateRequest("设备序列号",0, 0,0);
+        interLockUpdateRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.updateInterLock(interLockUpdateRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+
+    @Test
+    public void testDeleteInterLock() throws Exception {
+        Integer[] interLockNums = new Integer[]{1,2,3};
+        InterLockDeleteRequest interLockDeleteRequest = new InterLockDeleteRequest("设备序列号",interLockNums);
+        interLockDeleteRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.deleteInterLock(interLockDeleteRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testUpdateUserInterLock() throws Exception {
+        String[] employees = new String[]{"aaa", "bbb"};
+        UserInterLockUpdateRequest userInterLockUpdateRequest = new UserInterLockUpdateRequest("设备序列号",0,employees);
+        userInterLockUpdateRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.updateUserInterLock(userInterLockUpdateRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testDeleteUserInterLock() throws Exception {
+        Integer[] interLockNums = new Integer[]{1,2,3};
+        UserInterLockDeleteRequest userInterLockDeleteRequest = new UserInterLockDeleteRequest("设备序列号",interLockNums);
+        userInterLockDeleteRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.deleteUserInterLock(userInterLockDeleteRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testUpdateTriggerList() throws Exception {
+        List<TriggerData> triggerDatas = new ArrayList<TriggerData>();
+        TriggerData triggerData1 = new TriggerData(0,1);
+        TriggerData triggerData2 = new TriggerData(0,1);
+        triggerDatas.add(triggerData1);
+        triggerDatas.add(triggerData2);
+        TriggerListUpdateRequest triggerListUpdateRequest = new TriggerListUpdateRequest("设备序列号",1, triggerDatas);
+        triggerListUpdateRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.updateTriggerList(triggerListUpdateRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testDeleteTriggerList() throws Exception {
+        Integer[] triggerListNums = new Integer[]{1,2,3};
+        TriggerListDeleteRequest triggerListDeleteRequest = new TriggerListDeleteRequest("设备序列号", triggerListNums);
+        triggerListDeleteRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.deleteTriggerList(triggerListDeleteRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testUpdateAuxIn() throws Exception {
+        AuxInUpdateRequest auxInUpdateRequest = new AuxInUpdateRequest("设备序列号", 1);
+        auxInUpdateRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.updateAuxIn(auxInUpdateRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testQueryAuxIn() throws Exception {
+        AuxInQueryRequest auxInQueryRequest = new AuxInQueryRequest("设备序列号");
+        auxInQueryRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message<List<AuxInQueryResponse>> response = client.queryAuxIn(auxInQueryRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testUpdateAuxOut() throws Exception {
+        AuxOutUpdateRequest auxOutUpdateRequest = new AuxOutUpdateRequest("设备序列号", 1);
+        auxOutUpdateRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message response = client.updateAuxOut(auxOutUpdateRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+    @Test
+    public void testQueryAuxOut() throws Exception {
+        AuxOutQueryRequest auxOutQueryRequest = new AuxOutQueryRequest("设备序列号");
+        auxOutQueryRequest.setApiUser(new User(defaultCompanyApiUsername, defaultCompanyApiPassword));
+        Message<List<AuxOutQueryResponse>> response = client.queryAuxOut(auxOutQueryRequest);
+        System.err.println(JSONUtil.toJsonPrettyStr(response));
+        Assert.assertEquals(response.getMessage(), ErrorCode.CODE_SUCCESS, response.getCode());
+    }
+
+} 

@@ -5,10 +5,10 @@
     <parent>
         <artifactId>zkcloud-sdk-java</artifactId>
         <groupId>com.zkteco</groupId>
-        <version>1.3.1</version>
+        <version>1.4.0</version>
     </parent>
     <artifactId>zkcloud-dbs-3rd</artifactId>
-    <version>1.3.1</version>
+    <version>1.4.0</version>
     <name>zkcloud-dbs-3rd</name>
     <description>3rd demo</description>
 

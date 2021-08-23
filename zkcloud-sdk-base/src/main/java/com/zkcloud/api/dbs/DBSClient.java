@@ -11,6 +11,15 @@ import com.zkcloud.api.dbs.common.constant.ErrorCode;
 import com.zkcloud.api.dbs.common.constant.PathConstant;
 import com.zkcloud.api.dbs.common.http.HttpConnection;
 import com.zkcloud.api.dbs.exception.ZKCloudSDKException;
+import com.zkcloud.api.dbs.model.AlarmCancelRequest;
+import com.zkcloud.api.dbs.model.AntiPassBackDeleteRequest;
+import com.zkcloud.api.dbs.model.AntiPassBackUpdateRequest;
+import com.zkcloud.api.dbs.model.AuxInQueryRequest;
+import com.zkcloud.api.dbs.model.AuxInQueryResponse;
+import com.zkcloud.api.dbs.model.AuxInUpdateRequest;
+import com.zkcloud.api.dbs.model.AuxOutQueryRequest;
+import com.zkcloud.api.dbs.model.AuxOutQueryResponse;
+import com.zkcloud.api.dbs.model.AuxOutUpdateRequest;
 import com.zkcloud.api.dbs.model.BiotemplateRequest;
 import com.zkcloud.api.dbs.model.CancelRegisterBiometricRequest;
 import com.zkcloud.api.dbs.model.CancelRegisterFpRequest;
@@ -35,6 +44,7 @@ import com.zkcloud.api.dbs.model.DeviceUpgradeHistoryRequest;
 import com.zkcloud.api.dbs.model.DeviceUpgradeHistoryResponse;
 import com.zkcloud.api.dbs.model.DeviceUpgradeRequest;
 import com.zkcloud.api.dbs.model.DeviceUpgradeResponse;
+import com.zkcloud.api.dbs.model.DoorCloseRequest;
 import com.zkcloud.api.dbs.model.DoorHolidayDeleteRequest;
 import com.zkcloud.api.dbs.model.DoorHolidayUpdateRequest;
 import com.zkcloud.api.dbs.model.DoorParamQueryRequest;
@@ -67,16 +77,28 @@ import com.zkcloud.api.dbs.model.EmployeeDeleteResponse;
 import com.zkcloud.api.dbs.model.EmployeeFaceRequest;
 import com.zkcloud.api.dbs.model.EmployeeFaceResponse;
 import com.zkcloud.api.dbs.model.EmployeeFaceSyncRequest;
+import com.zkcloud.api.dbs.model.EmployeeGroupDeleteRequest;
+import com.zkcloud.api.dbs.model.EmployeeGroupUpdateRequest;
 import com.zkcloud.api.dbs.model.EmployeeUnbindDeviceRequest;
 import com.zkcloud.api.dbs.model.EmployeeUnbindDeviceResponse;
 import com.zkcloud.api.dbs.model.EmployeeUpdateBatchRequest;
 import com.zkcloud.api.dbs.model.EmployeeUpdateRequest;
 import com.zkcloud.api.dbs.model.EmployeeUpdateResponse;
+import com.zkcloud.api.dbs.model.FirstOpenDeleteRequest;
+import com.zkcloud.api.dbs.model.FirstOpenUpdateRequest;
 import com.zkcloud.api.dbs.model.FwSeriesRequest;
 import com.zkcloud.api.dbs.model.FwSeriesResponse;
 import com.zkcloud.api.dbs.model.GetTokenResponse;
+import com.zkcloud.api.dbs.model.InterLockDeleteRequest;
+import com.zkcloud.api.dbs.model.InterLockUpdateRequest;
+import com.zkcloud.api.dbs.model.LinkageDeleteRequest;
+import com.zkcloud.api.dbs.model.LinkageUpdateRequest;
+import com.zkcloud.api.dbs.model.LockGateRequest;
+import com.zkcloud.api.dbs.model.MultiGroupDeleteRequest;
+import com.zkcloud.api.dbs.model.MultiGroupUpdateRequest;
 import com.zkcloud.api.dbs.model.NewFwVersionsRequest;
 import com.zkcloud.api.dbs.model.NewFwVersionsResponse;
+import com.zkcloud.api.dbs.model.NormalOpenRequest;
 import com.zkcloud.api.dbs.model.OpenDoorRequest;
 import com.zkcloud.api.dbs.model.OrgBindDeviceRequest;
 import com.zkcloud.api.dbs.model.OrgBindDeviceResponse;
@@ -91,10 +113,30 @@ import com.zkcloud.api.dbs.model.PunchRecordByPageRequest;
 import com.zkcloud.api.dbs.model.PunchRecordByPageResponse;
 import com.zkcloud.api.dbs.model.PunchRecordVerifyRequest;
 import com.zkcloud.api.dbs.model.PunchRecordVerifyResponse;
+import com.zkcloud.api.dbs.model.ReaderParamQueryRequest;
+import com.zkcloud.api.dbs.model.ReaderParamQueryResponse;
+import com.zkcloud.api.dbs.model.ReaderParamUpdateRequest;
+import com.zkcloud.api.dbs.model.ReaderQueryRequest;
+import com.zkcloud.api.dbs.model.ReaderQueryResponse;
+import com.zkcloud.api.dbs.model.ReaderUpdateRequest;
 import com.zkcloud.api.dbs.model.RegisterBiometricRequest;
 import com.zkcloud.api.dbs.model.RegisterBiometricResponse;
 import com.zkcloud.api.dbs.model.RegisterFpRequest;
 import com.zkcloud.api.dbs.model.RegisterFpResponse;
+import com.zkcloud.api.dbs.model.ReloadDeviceInfoRequest;
+import com.zkcloud.api.dbs.model.ReloadDeviceRecordRequest;
+import com.zkcloud.api.dbs.model.SuperUserDeleteRequest;
+import com.zkcloud.api.dbs.model.SuperUserUpdateRequest;
+import com.zkcloud.api.dbs.model.TimeSyncRequest;
+import com.zkcloud.api.dbs.model.TodayNormalOpenRequest;
+import com.zkcloud.api.dbs.model.TriggerListDeleteRequest;
+import com.zkcloud.api.dbs.model.TriggerListUpdateRequest;
+import com.zkcloud.api.dbs.model.UserAntiPassBackDeleteRequest;
+import com.zkcloud.api.dbs.model.UserAntiPassBackUpdateRequest;
+import com.zkcloud.api.dbs.model.UserInterLockDeleteRequest;
+import com.zkcloud.api.dbs.model.UserInterLockUpdateRequest;
+import com.zkcloud.api.dbs.model.UserLinkageDeleteRequest;
+import com.zkcloud.api.dbs.model.UserLinkageUpdateRequest;
 import com.zkcloud.api.dbs.model.VerifyInfoByDeviceRequest;
 import com.zkcloud.api.dbs.model.VerifyInfoByDeviceResponse;
 import com.zkcloud.api.dbs.model.VerifyInfoByEmployeeRequest;
@@ -743,6 +785,7 @@ public class DBSClient extends AbstractClient {
      * @return
      * @throws ZKCloudSDKException
      */
+    @Deprecated
     public Message updateDoorPassword(DoorPasswordUpdateRequest doorPasswordUpdateRequest) throws ZKCloudSDKException {
         String response = baseRequest("/v1.0/device/doorPassword/update", doorPasswordUpdateRequest);
         Type type = new TypeToken<Message>() {
@@ -756,6 +799,7 @@ public class DBSClient extends AbstractClient {
      * @return
      * @throws ZKCloudSDKException
      */
+    @Deprecated
     public Message deleteDoorPassword(DoorPasswordDeleteRequest doorPasswordDeleteRequest) throws ZKCloudSDKException {
         String response = baseRequest("/v1.0/device/doorPassword/delete", doorPasswordDeleteRequest);
         Type type = new TypeToken<Message>() {
@@ -769,6 +813,7 @@ public class DBSClient extends AbstractClient {
      * @return
      * @throws ZKCloudSDKException
      */
+    @Deprecated
     public Message openDoorPassword (DoorPasswordOpenRequest doorPasswordOpenRequest) throws ZKCloudSDKException {
         String response = baseRequest("/v1.0/device/doorPassword/open", doorPasswordOpenRequest);
         Type type = new TypeToken<Message>() {
@@ -1058,6 +1103,7 @@ public class DBSClient extends AbstractClient {
      * @date 2021/1/7 9:19
      * @since 1.0.0
      */
+    @Deprecated
     public Message<List<DeviceUpgradeBatchResponse>> deviceUpgradeBatch(DeviceUpgradeBatchRequest deviceUpgradeBatchRequest) throws ZKCloudSDKException {
         String response = baseRequest("/v1.0/ufo/devices/upgrade", deviceUpgradeBatchRequest);
         Type type = new TypeToken<Message<List<DeviceUpgradeBatchResponse>>>() {
@@ -1075,11 +1121,666 @@ public class DBSClient extends AbstractClient {
      * @date 2021/1/7 9:20
      * @since 1.0.0
      */
+    @Deprecated
     public Message<FwSeriesResponse> getSeries(FwSeriesRequest fwSeriesRequest) throws ZKCloudSDKException{
         String response = baseRequest("/v1.0/ufo/device/querySeries", fwSeriesRequest);
         Type type = new TypeToken<Message<FwSeriesResponse>>() {
         }.getType();
         return gson.fromJson(response, type);
     }
+
+    /**
+     * 更新首人常开
+     *
+     * @param firstCardUpdateRequest
+     * @return
+     * @throws ZKCloudSDKException
+     */
+    public Message updateFirstOpen(FirstOpenUpdateRequest firstCardUpdateRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/firstOpen/update", firstCardUpdateRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * deleteFirstCard
+     * 删除首人常开
+     * @param firstCardDeleteRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/7/5 14:24
+     * @since 1.0.0
+     */
+    public Message deleteFirstOpen(FirstOpenDeleteRequest firstCardDeleteRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/firstOpen/delete", firstCardDeleteRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+
+    /**
+     * updateEmployeeGroup
+     * 更新多人开门人员组
+     * @param employeeGroupUpdateRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/7/5 14:24
+     * @since 1.0.0
+     */
+    public Message updateEmployeeGroup(EmployeeGroupUpdateRequest employeeGroupUpdateRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/employeeGroup/update", employeeGroupUpdateRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+
+    /**
+     * deleteEmployeeGroup
+     * 删除多人开门人员组
+     * @param employeeGroupDeleteRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/7/5 14:45
+     * @since 1.0.0
+     */
+    public Message deleteEmployeeGroup(EmployeeGroupDeleteRequest employeeGroupDeleteRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/employeeGroup/delete", employeeGroupDeleteRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+
+    /**
+     * updateEmployeeGroup
+     * 更新多人开门人员组
+     * @param multiGroupUpdateRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/7/5 14:24
+     * @since 1.0.0
+     */
+    public Message updateMultiGroup(MultiGroupUpdateRequest multiGroupUpdateRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/multiGroup/update", multiGroupUpdateRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * deleteMultiGroup
+     * 删除多人开门
+     * @param multiGroupDeleteRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/7/5 15:24
+     * @since 1.0.0
+     */
+    public Message deleteMultiGroup(MultiGroupDeleteRequest multiGroupDeleteRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/multiGroup/delete", multiGroupDeleteRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+
+    /**
+     * updateSuperUser
+     * 更新超级用户权限
+     * @param superUserUpdateRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/7/5 15:46
+     * @since 1.0.0
+     */
+    public Message updateSuperUser(SuperUserUpdateRequest superUserUpdateRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/superUser/update", superUserUpdateRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * deleteSuperUser
+     * 删除超级用户权限
+     * @param superUserDeleteRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/7/5 16:23
+     * @since 1.0.0
+     */
+    public Message deleteSuperUser(SuperUserDeleteRequest superUserDeleteRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/superUser/delete", superUserDeleteRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * closeDoor
+     * 远程关门
+     * @param doorCloseRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/7/5 16:40
+     * @since 1.0.0
+     */
+    public Message closeDoor(DoorCloseRequest doorCloseRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/closeDoor", doorCloseRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * closeDoor
+     * 远程常开
+     * @param normalOpenRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/7/5 16:46
+     * @since 1.0.0
+     */
+    public Message normalOpen(NormalOpenRequest normalOpenRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/normalOpen", normalOpenRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * normalOpen
+     * 控制当天常开
+     * @param todayNormalOpenRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/7/5 16:53
+     * @since 1.0.0
+     */
+    public Message todayNormalOpen(TodayNormalOpenRequest todayNormalOpenRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/todayNormalOpen", todayNormalOpenRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * lockGate
+     * 远程锁定
+     * @param lockGateRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/7/5 17:00
+     * @since 1.0.0
+     */
+    public Message lockGate(LockGateRequest lockGateRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/lockGate", lockGateRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+
+    /**
+     * updateReader
+     * 修改读头信息
+     * @param readerUpdateRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/7/5 17:18
+     * @since 1.0.0
+     */
+    public Message updateReader(ReaderUpdateRequest readerUpdateRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/reader/update", readerUpdateRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * queryReader
+     * 查询读头信息
+     * @param readerQueryRequest
+     * @return com.zkcloud.api.dbs.common.Message<java.util.List < com.zkcloud.api.dbs.model.ReaderQueryResponse>>
+     * @throws
+     * @author miller.li
+     * @date 2021/7/5 18:03
+     * @since 1.0.0
+     */
+    public Message<List<ReaderQueryResponse>> queryReader(ReaderQueryRequest readerQueryRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/reader/query", readerQueryRequest);
+        Type type = new TypeToken<Message<List<ReaderQueryResponse>>>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * updateReaderParam
+     * 修改读头参数（废弃）
+     * @param readerParamUpdateRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/7/5 18:25
+     * @since 1.0.0
+     */
+    @Deprecated
+    public Message updateReaderParam(ReaderParamUpdateRequest readerParamUpdateRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/readerParam/update", readerParamUpdateRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * queryReaderParam
+     * 查询读头参数
+     * @param readerParamQueryRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/7/6 9:42
+     * @since 1.0.0
+     */
+    @Deprecated
+    public Message<List<ReaderParamQueryResponse>> queryReaderParam(ReaderParamQueryRequest readerParamQueryRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/readerParam/query", readerParamQueryRequest);
+        Type type = new TypeToken<Message<List<ReaderParamQueryResponse>>>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * cancelAlarm
+     * 取消报警
+     * @param alarmCancelRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/7/6 11:49
+     * @since 1.0.0
+     */
+    public Message cancelAlarm(AlarmCancelRequest alarmCancelRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/cancelAlarm", alarmCancelRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+
+    /**
+     * reloadRecord
+     * 重新上传设备记录
+     * @param reloadDeviceRecordRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/7/6 13:48
+     * @since 1.0.0
+     */
+    public Message reloadRecord(ReloadDeviceRecordRequest reloadDeviceRecordRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/reloadRecord", reloadDeviceRecordRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * reloadRecord
+     * 重新上传设备信息(废弃)
+     * @param reloadDeviceInfoRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/7/6 14:13
+     * @since 1.0.0
+     */
+    @Deprecated
+    public Message reloadDeviceInfo(ReloadDeviceInfoRequest reloadDeviceInfoRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/reloadDeviceInfo", reloadDeviceInfoRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * syncTime
+     * 同步服务器时间到设备
+     * @param timeSyncRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/7/7 16:41
+     * @since 1.0.0
+     */
+    public Message syncTime(TimeSyncRequest timeSyncRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/syncTime", timeSyncRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * linkageUpdate
+     * 更新联动信息
+     * @param linkageUpdateRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/8/2 15:27
+     * @since 1.0.0
+     */
+    public Message updateLinkage(LinkageUpdateRequest linkageUpdateRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/linkage/update", linkageUpdateRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * deleteLinkage
+     * 删除联动信息
+     * @param linkageDeleteRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/8/2 15:34
+     * @since 1.0.0
+     */
+    public Message deleteLinkage(LinkageDeleteRequest linkageDeleteRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/linkage/delete", linkageDeleteRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * updateUserLinkage
+     * 更新用户联动信息
+     * @param userLinkageUpdateRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/8/2 15:46
+     * @since 1.0.0
+     */
+    public Message updateUserLinkage(UserLinkageUpdateRequest userLinkageUpdateRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/userLinkage/update", userLinkageUpdateRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * deleteUserLinkage
+     * 删除用户联动信息
+     * @param userLinkageDeleteRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/8/2 15:55
+     * @since 1.0.0
+     */
+    public Message deleteUserLinkage(UserLinkageDeleteRequest userLinkageDeleteRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/userLinkage/delete", userLinkageDeleteRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * updateAntiPassBack
+     * 更新反潜信息
+     * @param antiPassBackUpdateRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/8/2 16:14
+     * @since 1.0.0
+     */
+    public Message updateAntiPassBack(AntiPassBackUpdateRequest antiPassBackUpdateRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/antiPassBack/update", antiPassBackUpdateRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * deleteAntiPassBack
+     * 删除反潜信息
+     * @param antiPassBackDeleteRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/8/2 16:21
+     * @since 1.0.0
+     */
+    public Message deleteAntiPassBack(AntiPassBackDeleteRequest antiPassBackDeleteRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/antiPassBack/delete", antiPassBackDeleteRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+
+    /**
+     * updateUserAntiPassBack
+     * 更新用户反潜信息
+     * @param userAntiPassBackUpdateRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/8/2 16:34
+     * @since 1.0.0
+     */
+    public Message updateUserAntiPassBack(UserAntiPassBackUpdateRequest userAntiPassBackUpdateRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/userAntiPassBack/update", userAntiPassBackUpdateRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+    
+    /**
+     * deleteAntiPassBack
+     *  删除用户反潜信息
+     * @param userAntiPassBackDeleteRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/8/2 16:40
+     * @since 1.0.0
+     */
+    public Message deleteUserAntiPassBack(UserAntiPassBackDeleteRequest userAntiPassBackDeleteRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/userAntiPassBack/delete", userAntiPassBackDeleteRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * updateInterLock
+     * 更新互锁信息
+     * @param interLockUpdateRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/8/2 16:54
+     * @since 1.0.0
+     */
+    public Message updateInterLock(InterLockUpdateRequest interLockUpdateRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/interLock/update", interLockUpdateRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * deleteInterLock
+     * 删除互锁信息
+     * @param interLockDeleteRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/8/2 17:00
+     * @since 1.0.0
+     */
+    public Message deleteInterLock(InterLockDeleteRequest interLockDeleteRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/interLock/delete", interLockDeleteRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * updateUserInterLock
+     * 更新用户互锁信息
+     * @param userInterLockUpdateRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/8/2 17:06
+     * @since 1.0.0
+     */
+    public Message updateUserInterLock(UserInterLockUpdateRequest userInterLockUpdateRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/userInterLock/update", userInterLockUpdateRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+    
+    /**
+     * deleteUserInterLock
+     * 删除用户互锁信息
+     * @param userInterLockDeleteRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/8/2 17:13
+     * @since 1.0.0
+     */
+    public Message deleteUserInterLock(UserInterLockDeleteRequest userInterLockDeleteRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/userInterLock/delete", userInterLockDeleteRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * updateTriggerList
+     * 更新触发点集合
+     * @param triggerListUpdateRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/8/2 17:29
+     * @since 1.0.0
+     */
+    public Message updateTriggerList(TriggerListUpdateRequest triggerListUpdateRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/triggerList/update", triggerListUpdateRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * deleteTriggerList
+     * 删除触发点集合
+     * @param triggerListDeleteRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/8/2 17:36
+     * @since 1.0.0
+     */
+    public Message deleteTriggerList(TriggerListDeleteRequest triggerListDeleteRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/triggerList/delete", triggerListDeleteRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * updateAuxIn
+     * 修改辅助输入信息
+     * @param auxInUpdateRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/8/2 17:59
+     * @since 1.0.0
+     */
+    public Message updateAuxIn(AuxInUpdateRequest auxInUpdateRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/auxIn/update", auxInUpdateRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * queryAuxIn
+     * 查询辅助输入信息
+     * @param auxInQueryRequest
+     * @return com.zkcloud.api.dbs.common.Message<com.zkcloud.api.dbs.model.AuxInQueryResponse>
+     * @throws
+     * @author miller.li
+     * @date 2021/8/3 9:26
+     * @since 1.0.0
+     */
+    public Message<List<AuxInQueryResponse>> queryAuxIn(AuxInQueryRequest auxInQueryRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/auxIn/query", auxInQueryRequest);
+        Type type = new TypeToken<Message<List<AuxInQueryResponse>>>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+    
+    /**
+     * updateAuxOut
+     * 修改辅助输出信息
+     * @param auxOutUpdateRequest
+     * @return com.zkcloud.api.dbs.common.Message
+     * @throws
+     * @author miller.li
+     * @date 2021/8/3 9:54
+     * @since 1.0.0
+     */
+    public Message updateAuxOut(AuxOutUpdateRequest auxOutUpdateRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/auxOut/update", auxOutUpdateRequest);
+        Type type = new TypeToken<Message>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
+    /**
+     * queryAuxOut
+     * 查询辅助输出信息
+     * @param auxOutQueryRequest
+     * @return com.zkcloud.api.dbs.common.Message<com.zkcloud.api.dbs.model.AuxOutQueryResponse>
+     * @throws
+     * @author miller.li
+     * @date 2021/8/3 10:08
+     * @since 1.0.0
+     */
+    public Message<List<AuxOutQueryResponse>> queryAuxOut(AuxOutQueryRequest auxOutQueryRequest) throws ZKCloudSDKException {
+        String response = baseRequest("/v1.0/device/auxOut/query", auxOutQueryRequest);
+        Type type = new TypeToken<Message<List<AuxOutQueryResponse>>>() {
+        }.getType();
+        return gson.fromJson(response, type);
+    }
+
 
 }
