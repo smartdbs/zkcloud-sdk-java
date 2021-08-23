@@ -15,7 +15,7 @@ public class OpenDoorRequest extends AbstractModel {
  　  * 门编号，取值范围，1～4。当门编号为空或不传，则默认开启编号为1的门
  　  */
     @Expose
-    private String doorNum;
+    private Integer doorNum;
 
     /**
  　  * 操作者员工编号
@@ -35,19 +35,19 @@ public class OpenDoorRequest extends AbstractModel {
         this.sn = sn;
     }
 
-    public String getDoorNum() {
-        return doorNum;
-    }
-
-    public void setDoorNum(String doorNum) {
-        this.doorNum = doorNum;
-    }
-
     public String getEmployeeNo() {
         return employeeNo;
     }
 
     public void setEmployeeNo(String employeeNo) {
         this.employeeNo = employeeNo;
+    }
+
+    public Integer getDoorNum() {
+        return doorNum;
+    }
+
+    public void setDoorNum(Integer doorNum) {
+        this.doorNum = doorNum;
     }
 }

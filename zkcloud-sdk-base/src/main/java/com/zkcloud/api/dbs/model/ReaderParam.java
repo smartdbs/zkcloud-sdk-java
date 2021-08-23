@@ -1,9 +1,10 @@
 package com.zkcloud.api.dbs.model;
 
+
 import com.google.gson.annotations.Expose;
 import com.zkcloud.api.dbs.common.AbstractModel;
 
-public  class DoorParam  extends AbstractModel {
+public class ReaderParam extends AbstractModel {
 
     /**
      * 参数名
@@ -16,9 +17,17 @@ public  class DoorParam  extends AbstractModel {
      */
     @Expose
     private String value;
+
+
+    public ReaderParam(String name, String value) {
+        this.name = name;
+        this.value = value;
+    }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -28,13 +37,6 @@ public  class DoorParam  extends AbstractModel {
     }
 
     public void setValue(String value) {
-        this.value = value;
-    }
-
-    public DoorParam(){}
-
-    public DoorParam(String name, String value) {
-        this.name = name;
         this.value = value;
     }
 }

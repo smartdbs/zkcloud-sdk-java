@@ -16,7 +16,7 @@ public class DoorTransactionRecordResponse {
      * 门编号
      */
     @Expose
-    private  String doorNum;
+    private  Integer doorNum;
 
     /**
      * 操作者，当验证通过时应为员工工号或访客编号，若远程开门时为远程开门时下发的操作者名称
@@ -46,7 +46,7 @@ public class DoorTransactionRecordResponse {
      * 出入状态，0:入，1:出
      */
     @Expose
-    private  String inOutState;
+    private  Integer inOutState;
 
     /**
      * 事件码，详见门禁实时事件码说明
@@ -58,7 +58,7 @@ public class DoorTransactionRecordResponse {
      * 验证方式，详见验证方式说明
      */
     @Expose
-    private  String verified;
+    private  Integer verified;
 
 
     public String getSn() {
@@ -67,14 +67,6 @@ public class DoorTransactionRecordResponse {
 
     public void setSn(String sn) {
         this.sn = sn;
-    }
-
-    public String getDoorNum() {
-        return doorNum;
-    }
-
-    public void setDoorNum(String doorNum) {
-        this.doorNum = doorNum;
     }
 
     public String getOperator() {
@@ -109,14 +101,6 @@ public class DoorTransactionRecordResponse {
         this.pushTime = pushTime;
     }
 
-    public String getInOutState() {
-        return inOutState;
-    }
-
-    public void setInOutState(String inOutState) {
-        this.inOutState = inOutState;
-    }
-
     public String getEventCode() {
         return eventCode;
     }
@@ -125,11 +109,27 @@ public class DoorTransactionRecordResponse {
         this.eventCode = eventCode;
     }
 
-    public String getVerified() {
+    public Integer getDoorNum() {
+        return doorNum;
+    }
+
+    public void setDoorNum(Integer doorNum) {
+        this.doorNum = doorNum;
+    }
+
+    public Integer getInOutState() {
+        return inOutState;
+    }
+
+    public void setInOutState(Integer inOutState) {
+        this.inOutState = inOutState;
+    }
+
+    public Integer getVerified() {
         return verified;
     }
 
-    public void setVerified(String verified) {
+    public void setVerified(Integer verified) {
         this.verified = verified;
     }
 
